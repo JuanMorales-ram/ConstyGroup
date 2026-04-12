@@ -20,5 +20,6 @@
     <string name="TextVerificarCodigo">Verificar Codigo</string>
     <string name="InputTextCodeVerificacion">Codigo de verificacion</string>
     <string name="TextCambiarContrasena">Cambiar Contraseña</string>
+    <string name="logo">Logo</string>
 
 </resources>
