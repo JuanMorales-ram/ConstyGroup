@@ -1,10 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Consty_Group</string>
-    <string name="title_activity_inicio_app">InicioApp</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="TextoBienvenido">Bienvenido a..</string>
     <string name="NombteEmpresa">CONSTY</string>
-    <string name="TextoBtnRegistrarse">Registrarse</string>
     <string name="TextoBtniniciar_secion">Iniciar sesión</string>
     <string name="FraceMotivacionalInicio">Pequeños pasos, grandes cambios</string>
     <string name="DescripcionLogo">Logo de empresa</string>
@@ -13,12 +10,8 @@
     <string name="TextEmail">Email</string>
     <string name="TextContrasena">Contraseña</string>
     <string name="TextConfirmarContraSena">Confirma tu contraseña</string>
-    <string name="TextBotonRegistro">Esto comienza ahora...</string>
     <string name="FraceMotivacional4">De vuelta al camino del progreso</string>
     <string name="fraceMotivacional5">No te preocupes cosas que pasan :D</string>
-    <string name="TextButtonEnviarCodigo">Enviar Codigo</string>
-    <string name="TextVerificarCodigo">Verificar Codigo</string>
-    <string name="InputTextCodeVerificacion">Codigo de verificacion</string>
     <string name="TextCambiarContrasena">Cambiar Contraseña</string>
 
 </resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgrpundimg"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Activities.ConfirmarCorreo">
+
+    <ScrollView
+        android:id="@+id/ScrollConfirmarCor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/containerConfirmarCor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- TEXTO SUPERIOR -->
+            <TextView
+                android:id="@+id/TextBienvenidaConfirmarCor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/fraceMotivacional5"
+                android:textColor="@color/TextoGris"
+                android:textSize="16sp" />
+
+            <!-- LOGO -->
+
+            <!-- EMAIL -->
+            <ImageView
+                android:id="@+id/LogoLogIn"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="26dp"
+                android:contentDescription="Logo"
+                app:srcCompat="@drawable/logosinfondo" />
+
+            <EditText
+                android:id="@+id/InputEmailConfirmarCor"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/TextEmail"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:textColor="@color/TextoGris" />
+
+
+            <Button
+                android:id="@+id/ButtonEnviarCodigo"
+                android:layout_width="250dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/backgroundColo"
+                android:text="@string/TextButtonEnviarCodigo"
+                android:textColor="@color/white"
+                 />
+
+
+
+
+            <EditText
+                android:id="@+id/InputContrasenaConfirmarCor"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/InputTextCodeVerificacion"
+                android:inputType="number"
+                android:paddingStart="20dp"
+                android:textColor="@color/TextoGris" />
+
+            <Button
+                android:id="@+id/ButtoVerificarCodigo"
+                android:layout_width="250dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/backgroundColo"
+                android:text="@string/TextVerificarCodigo"
+                android:textColor="@color/white"
+                android:textAllCaps="false" />
+
+
+            </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
