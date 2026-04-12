@@ -45,7 +45,7 @@ tools:context=".Activities.RecuperarContrasena">
             android:contentDescription="@string/logo"/>
 
 
-        <!-- Contraseña -->
+
         <EditText
             android:id="@+id/InputContrasenaRecupContra"
             android:layout_width="match_parent"
