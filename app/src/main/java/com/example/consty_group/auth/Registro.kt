@@ -1,23 +1,25 @@
-package com.example.consty_group.Activities
+package com.example.consty_group.auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.consty_group.Activities.InicioApp
 import com.example.consty_group.R
 
-class LogIn : AppCompatActivity() {
+class Registro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        setContentView(R.layout.activity_log_in)
-        val scrollView = findViewById<ViewGroup>(R.id.ScrollLogIn)
+        setContentView(R.layout.activity_registro)
+        val scrollView = findViewById<ViewGroup>(R.id.ScrollRegistro)
+
+
 
 
         ViewCompat.setOnApplyWindowInsetsListener(scrollView) { v, insets ->
@@ -33,11 +35,14 @@ class LogIn : AppCompatActivity() {
                 bottomPading
             )
             insets
+
         }
 
-        val TextRecupContra = findViewById<TextView>(R.id.TextRecupContra)
-        TextRecupContra.setOnClickListener {
-            startActivity(Intent(this, ConfirmarCorreo::class.java))
+        val nombreEmpresa = findViewById<TextView>(R.id.NombreEmpresaRegistro)
+
+        nombreEmpresa.setOnClickListener {
+            startActivity(Intent(this, InicioApp::class.java))
         }
     }
+
 }

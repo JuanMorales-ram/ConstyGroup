@@ -18,10 +18,10 @@
             android:name=".Activities.ConfirmarCorreo"
             android:exported="false" />
         <activity
-            android:name=".Activities.LogIn"
+            android:name=".auth.LogIn"
             android:exported="false" />
         <activity
-            android:name=".Activities.Registro"
+            android:name=".auth.Registro"
             android:exported="false" />
         <activity
             android:name=".Activities.InicioApp"

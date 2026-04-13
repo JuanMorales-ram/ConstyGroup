@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.consty_group.R
+import com.example.consty_group.auth.LogIn
+import com.example.consty_group.auth.Registro
 
 class InicioApp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

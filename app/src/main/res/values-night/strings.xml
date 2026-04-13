@@ -14,5 +14,23 @@
     <string name="fraceMotivacional5">No te preocupes cosas que pasan :D</string>
     <string name="TextCambiarContrasena">Cambiar Contraseña</string>
     <string name="logo">Logo</string>
+    <string name="juanit0_x">Juanit0_x</string>
+    <string name="ojicbag_gmail_com">ojicbag@gmail.com</string>
+    <string name="consty">CONSTY</string>
+    <string name="estad_sticas">Estadísticas</string>
+    <string name="_45">45</string>
+    <string name="d_as_nactivos">Días\nactivos</string>
+    <string name="_18">18</string>
+    <string name="racha_nactual">Racha\nactual</string>
+    <string name="_7_d_as_nracha">7 días\nracha</string>
+    <string name="habitos_ndel_dia">Habitos\ndel dia</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="habitos">Habitos</string>
+    <string name="_0">0</string>
+    <string name="mis_logros">Mis logros</string>
+    <string name="primer_npaso">Primer\npaso</string>
+    <string name="cuenta">Cuenta</string>
+    <string name="ayuda_y_soporte">ayuda y soporte</string>
 
 </resources>

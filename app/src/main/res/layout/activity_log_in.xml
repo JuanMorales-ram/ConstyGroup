@@ -8,7 +8,7 @@
     android:background="@drawable/backgrpundimg"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Activities.Registro">
+    tools:context=".auth.Registro">
 
     <ScrollView
         android:id="@+id/ScrollLogIn"
