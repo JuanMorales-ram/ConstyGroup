@@ -32,5 +32,16 @@
     <string name="primer_npaso">Primer\npaso</string>
     <string name="cuenta">Cuenta</string>
     <string name="ayuda_y_soporte">ayuda y soporte</string>
+    <string name="configuraci_n_perfil">Configuración Perfil</string>
+    <string name="cambiar_foto_de_perfil">Cambiar foto de perfil</string>
+    <string name="juanit0x">juanit0_x</string>
+    <string name="correo_electr_nico">Correo Electrónico</string>
+    <string name="privacidad">Privacidad</string>
+    <string name="nueva_contrase_a">Nueva Contraseña</string>
+    <string name="confirmar_contrase_a">Confirmar Contraseña</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="informaci_n_personal">Información Personal</string>
+    <string name="nombre_usuario">Nombre Usuario</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
 
 </resources>

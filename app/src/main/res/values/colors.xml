@@ -10,5 +10,7 @@
     <color name="BorderPrimerLogro">#FFA726</color>
     <color name="BorderSegundoLogro">#FF4D50</color>
     <color name="BorderTercerLogro">#41CCFF</color>
+    <color name="BotonCerrarSesion">#900B09</color>
+    <color name="HintInputs">#99FFFFFF</color>
 
 </resources>
