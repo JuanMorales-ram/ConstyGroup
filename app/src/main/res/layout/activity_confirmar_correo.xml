@@ -55,7 +55,7 @@
                 android:hint="@string/TextEmail"
                 android:inputType="textEmailAddress"
                 android:paddingStart="20dp"
-                android:textColor="@color/TextoGris" />
+                android:textColor="@color/black" />
 
 
             <Button
@@ -80,7 +80,7 @@
                 android:hint="@string/InputTextCodeVerificacion"
                 android:inputType="number"
                 android:paddingStart="20dp"
-                android:textColor="@color/TextoGris" />
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/ButtoVerificarCodigo"

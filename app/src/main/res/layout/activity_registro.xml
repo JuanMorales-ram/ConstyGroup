@@ -79,7 +79,7 @@
                 android:inputType="textPassword"
                 android:paddingStart="20dp"
                 android:paddingEnd="1dp"
-                android:textColor="@color/TextoGris" />
+                android:textColor="@color/black" />
 
             <!-- Confirmar contraseña -->
             <EditText
@@ -92,7 +92,7 @@
                 android:inputType="textPassword"
                 android:paddingStart="20dp"
                 android:paddingEnd="1dp"
-                android:textColor="@color/TextoGris" />
+                android:textColor="@color/black" />
 
             <!-- Botón principal -->
             <Button
