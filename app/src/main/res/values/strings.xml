@@ -52,5 +52,9 @@
     <string name="informaci_n_personal">Información Personal</string>
     <string name="nombre_usuario">Nombre Usuario</string>
     <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="admin_abitos">Admin Abitos</string>
+    <string name="nuevo_abito">Nuevo abito</string>
+    <string name="racha_de_avitos">Racha De avitos</string>
+    <string name="bienvenido">Bienvenido</string>
 
 </resources>

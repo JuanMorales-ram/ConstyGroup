@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/AdminAitos"
+        android:title="@string/admin_abitos"
+        android:icon="@drawable/libro"
+        />
+
+    <item
+        android:id="@+id/NuevAbito"
+        android:title="@string/nuevo_abito"
+        android:icon="@drawable/plus"
+        />
+
+    <item
+        android:id="@+id/RachaDeAVitos"
+        android:title="@string/racha_de_avitos"
+        android:icon="@drawable/racha"
+        />
+
+
+</menu>

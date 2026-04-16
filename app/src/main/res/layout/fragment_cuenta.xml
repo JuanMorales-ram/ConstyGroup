@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColo"
     android:padding="16dp"
-    tools:context=".perfil.CuentaFragment">
+    tools:context=".main.perfil.CuentaFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

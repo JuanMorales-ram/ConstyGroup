@@ -10,6 +10,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.consty_group.Activities.ConfirmarCorreo
 import com.example.consty_group.R
+import com.example.consty_group.main.MainActivity
 
 class LogIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,5 +40,13 @@ class LogIn : AppCompatActivity() {
         TextRecupContra.setOnClickListener {
             startActivity(Intent(this, ConfirmarCorreo::class.java))
         }
+
+        val ButtonLogIn = findViewById<TextView>(R.id.ButtonLogIn)
+        ButtonLogIn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+
+
     }
 }
