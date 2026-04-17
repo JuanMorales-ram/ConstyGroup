@@ -1,0 +1,118 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:backgroundTint="@color/backgroundColo"
+
+    >
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/borde_abito"
+
+
+    >
+
+    <!-- ICONO PRINCIPAL -->
+    <ImageView
+        android:id="@+id/iconoHabito"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/icono2"
+
+        android:background="@color/FonoDeIconoColor"/>
+
+    <!-- NOMBRE -->
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Texto_Ejemplo"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <!-- DÍAS -->
+    <TextView
+        android:id="@+id/txtDias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Texto_Ejemplo"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"/>
+
+    <!-- TEXTO -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quieres_agregarle_algo_en_este_momento"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"/>
+
+    <!-- BOTONES -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="12dp">
+
+        <Button
+            android:id="@+id/btnFoto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:text="@string/agregar_foto"
+            android:drawableStart = "@drawable/icono2"
+            android:drawableTint="@color/white"/>
+
+        <Button
+            android:id="@+id/btnUbicacion"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/agregar_ubicaci_n"
+            android:textSize="13sp"
+            android:drawableStart = "@drawable/icono1"
+            android:drawableTint="@color/white"
+            android:layout_margin="4dp"
+           />
+    </LinearLayout>
+
+    <!-- BOTÓN PRINCIPAL -->
+    <Button
+        android:id="@+id/btnCompletar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/completar_h_bito"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/ColorBotones"
+        />
+
+    <!-- BOTÓN SECUNDARIO -->
+    <Button
+        android:id="@+id/btnCompletarSin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/completar_sin_agregar"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="@color/FonoDeIconoColor"
+        />
+
+</LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

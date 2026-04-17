@@ -47,5 +47,12 @@
     <string name="nuevo_abito">Nuevo abito</string>
     <string name="racha_de_avitos">Racha De avitos</string>
     <string name="bienvenido">Bienvenido</string>
+    <string name="tus_abitos">Tus Abitos</string>
+    <string name="Texto_Ejemplo">lorem</string>
+    <string name="quieres_agregarle_algo_en_este_momento">¿Quieres agregarle algo en este momento?</string>
+    <string name="iconoDescription">icono</string>
+    <string name="agregar_foto">Agregar foto</string>
+    <string name="agregar_ubicaci_n">Agregar Ubicación</string>
+    <string name="completar_sin_agregar">Completar sin agregar</string>
 
 </resources>

@@ -13,5 +13,7 @@
     <color name="BotonCerrarSesion">#900B09</color>
     <color name="HintInputs">#99FFFFFF</color>
     <color name="ColorAvito1">#453AF9</color>
+    <color name="FonoDeIconoColor">#22263A</color>
+    <color name="ColorBotones">#453AF9</color>
 
 </resources>

@@ -1,0 +1,81 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:backgroundTint="@color/backgroundColo"
+
+   >
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/borde_abito">
+
+
+        <ImageView
+            android:id="@+id/iconoHabito"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:padding="10dp"
+            android:src="@drawable/icono1"
+            android:background="@color/FonoDeIconoColor"
+            android:scaleType="centerInside"/>
+
+        <!-- Contenido -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtDias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icono2"
+            android:layout_marginEnd="16dp"
+           />
+
+        <ImageView
+            android:id="@+id/icon2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icono1"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Botón -->
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/check_abito"
+        />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
