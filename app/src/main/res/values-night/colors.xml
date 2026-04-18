@@ -14,4 +14,9 @@
     <color name="FonoDeIconoColor">#22263A</color>
     <color name="ColorBotones">#453AF9</color>
     <color name="coloPrueba">#FFA726</color>
+    <color name="historial_rojo">#FF4D50</color>
+    <color name="historial_amarillo">#FFA726</color>
+    <color name="historial_verde">#2ECC71</color>
+    <color name="historial_card_bg">#181C2D</color>
+    <color name="historial_dia_vacio">#22263A</color>
 </resources>
