@@ -1,32 +1,31 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:backgroundTint="@color/backgroundColo"
-
-   >
+    app:cardBackgroundColor="@color/backgroundColo"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
+        android:background="@drawable/borde_abito"
         android:gravity="center_vertical"
-        android:background="@drawable/borde_abito">
-
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/iconoHabito"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="12dp"
-            android:padding="10dp"
-            android:src="@drawable/icono1"
             android:background="@color/FonoDeIconoColor"
-            android:scaleType="centerInside"/>
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/icono1" />
 
         <!-- Contenido -->
         <LinearLayout
@@ -41,40 +40,56 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtDias"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgRachaSimple"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/racha"
+                    app:tint="@color/ColorRojo" />
+
+                <TextView
+                    android:id="@+id/txtDias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/icon1"
+            android:id="@+id/iconCamaraSimple"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/icono2"
-            android:layout_marginEnd="16dp"
-           />
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/camara"
+            app:tint="@color/white" />
 
         <ImageView
-            android:id="@+id/icon2"
+            android:id="@+id/iconMapaSimple"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/icono1"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/puntomapa"
+            app:tint="@color/white" />
 
         <!-- Botón -->
         <CheckBox
             android:id="@+id/check"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/check_abito"
-        />
+            android:button="@null" />
 
     </LinearLayout>
 

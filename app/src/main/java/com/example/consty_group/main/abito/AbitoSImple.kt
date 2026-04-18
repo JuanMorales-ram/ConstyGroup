@@ -1,19 +1,25 @@
 package com.example.consty_group.main.abito
 
-sealed class AbitoItem
-
-
+sealed class AbitoItem {
+    abstract val nombre: String
+    abstract val dias: Int
+    abstract val color: Int
+    abstract val icono: Int
+    abstract var completadoHoy: Boolean
+}
 
 data class AbitoSImple(
-    val nombre: String,
-    val dias: Int,
-    val color: Int,
-    val icono: Int
+    override val nombre: String,
+    override val dias: Int,
+    override val color: Int,
+    override val icono: Int,
+    override var completadoHoy: Boolean = false
 ) : AbitoItem()
 
 data class AbitoComplejo(
-    val nombre: String,
-    val dias: Int,
-    val color: Int,
-    val icono: Int
+    override val nombre: String,
+    override val dias: Int,
+    override val color: Int,
+    override val icono: Int,
+    override var completadoHoy: Boolean = false
 ) : AbitoItem()

@@ -1,118 +1,170 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:backgroundTint="@color/backgroundColo"
+    app:cardBackgroundColor="@color/backgroundColo"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp">
 
-    >
-
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="12dp"
-    android:padding="16dp"
-    android:orientation="vertical"
-    android:background="@drawable/borde_abito"
-
-
-    >
-
-    <!-- ICONO PRINCIPAL -->
-    <ImageView
-        android:id="@+id/iconoHabito"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:src="@drawable/icono2"
-
-        android:background="@color/FonoDeIconoColor"/>
-
-    <!-- NOMBRE -->
-    <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Texto_Ejemplo"
-        android:textSize="18sp"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"/>
-
-    <!-- DÍAS -->
-    <TextView
-        android:id="@+id/txtDias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Texto_Ejemplo"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"/>
-
-    <!-- TEXTO -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quieres_agregarle_algo_en_este_momento"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"/>
-
-    <!-- BOTONES -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="12dp">
+        android:background="@drawable/borde_abito"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- ICONO PRINCIPAL -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_opcion_abito"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/iconoHabito"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/icono2"
+                app:tint="#FFA726" />
+
+            <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Correr"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- DÍAS -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/racha"
+                app:tint="@color/ColorRojo" />
+
+            <TextView
+                android:id="@+id/txtDias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/Texto_Ejemplo"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- PREGUNTA -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/TextoAbitocomplejo"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- OPCIONES FOTO Y UBICACIÓN -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/containerFoto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_opcion_abito"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/btnFotoIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_porcentaje"
+                    android:padding="8dp"
+                    android:src="@drawable/camara"
+                    app:tint="@color/coloPrueba" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/agregar_foto"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerUbicacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_opcion_abito"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/btnUbicacionIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_porcentaje"
+                    android:padding="8dp"
+                    android:src="@drawable/puntomapa"
+                    app:tint="#FFA726" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/agregar_ubicaci_n"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- BOTONES DE ACCIÓN -->
+        <Button
+            android:id="@+id/btnCompletar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/ColorBotones"
+            android:text="@string/completar_h_bito"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="16dp" />
 
         <Button
-            android:id="@+id/btnFoto"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="13sp"
-            android:text="@string/agregar_foto"
-            android:drawableStart = "@drawable/icono2"
-            android:drawableTint="@color/white"/>
+            android:id="@+id/btnCompletarSin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#1F2336"
+            android:text="@string/completar_sin_agregar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="16dp" />
 
-        <Button
-            android:id="@+id/btnUbicacion"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/agregar_ubicaci_n"
-            android:textSize="13sp"
-            android:drawableStart = "@drawable/icono1"
-            android:drawableTint="@color/white"
-            android:layout_margin="4dp"
-           />
     </LinearLayout>
-
-    <!-- BOTÓN PRINCIPAL -->
-    <Button
-        android:id="@+id/btnCompletar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/completar_h_bito"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/ColorBotones"
-        />
-
-    <!-- BOTÓN SECUNDARIO -->
-    <Button
-        android:id="@+id/btnCompletarSin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/completar_sin_agregar"
-        android:layout_marginTop="6dp"
-        android:backgroundTint="@color/FonoDeIconoColor"
-        />
-
-</LinearLayout>
-
-
 </androidx.cardview.widget.CardView>

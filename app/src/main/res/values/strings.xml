@@ -64,5 +64,6 @@
     <string name="agregar_ubicaci_n">Agregar Ubicación</string>
     <string name="completar_h_bito">Completar hábito</string>
     <string name="completar_sin_agregar">Completar sin agregar</string>
+    <string name="TextoAbitocomplejo">¿Quieres agregarle algo en este momento?</string>
 
 </resources>

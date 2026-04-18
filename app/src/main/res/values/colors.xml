@@ -15,5 +15,7 @@
     <color name="ColorAvito1">#453AF9</color>
     <color name="FonoDeIconoColor">#22263A</color>
     <color name="ColorBotones">#453AF9</color>
+    <color name="ColorRojo">#FF4D50</color>
+    <color name="coloPrueba">#FFA726</color>
 
 </resources>
