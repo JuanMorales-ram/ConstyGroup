@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRachaHabito"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:id="@+id/containerRacha"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/borde_racha_azul">
+
+        <!-- Fila superior: fuego + días + check circular -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_alignParentStart="true">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/racha"
+                    app:tint="@color/ColorRojo" />
+
+                <TextView
+                    android:id="@+id/tvDiasRacha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/_12_dias"
+                    android:textColor="#B0B0B0"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Círculo de check/estado -->
+            <ImageView
+                android:id="@+id/ivCheckRacha"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/check_abito" />
+        </RelativeLayout>
+
+        <!-- Contenedor del ícono con fondo redondeado -->
+        <FrameLayout
+            android:id="@+id/layoutIconoHabito"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/bg_icono_habito">
+
+            <ImageView
+                android:id="@+id/ivIconoHabito"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@drawable/racha"
+                android:scaleType="centerInside" />
+        </FrameLayout>
+
+        <!-- Nombre del hábito -->
+        <TextView
+            android:id="@+id/tvNombreHabito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/meditacion"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

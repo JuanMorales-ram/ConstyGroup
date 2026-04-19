@@ -1,14 +1,393 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.abito.NuevoAbitoFragment">
+    android:background="@color/backgroundColo"
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Flecha volver -->
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/iconovolver"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white"
+            android:rotation="0"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/volver" />
+
+        <!-- ===== NOMBRE DEL HÁBITO ===== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre_de_tu_habito"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etNombreHabito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_edit_text"
+            android:backgroundTint="@color/ColorCardsPerfil"
+            android:hint="@string/ej_meditar_10_minutos"
+            android:textColorHint="@color/HintInputs"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:padding="14dp"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Contador de caracteres -->
+        <TextView
+            android:id="@+id/tvContador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_0_30"
+            android:textColor="@color/HintInputs"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:layout_marginBottom="24dp" />
+
+        <!-- ===== SELECCIONA TU ÍCONO ===== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selecciona_tu_icono"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Buscador de ícono -->
+        <EditText
+            android:id="@+id/etBuscarIcono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_edit_text"
+            android:backgroundTint="@color/ColorCardsPerfil"
+            android:hint="@string/puedes_buscarlo"
+            android:textColorHint="@color/HintInputs"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:padding="14dp"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Grid de íconos con bordes redondeados -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/FonoDeIconoColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIconos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- ===== SELECCIONA COLOR ===== -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/FonoDeIconoColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvColores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- ===== RECORDATORIO ===== -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/FonoDeIconoColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/recordatorio"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchRecordatorio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:thumbTint="@color/white"
+                        app:trackTint="@color/ColorBotones" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerRecordatorio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:id="@+id/tvHora"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/_8_00_pm"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btnSeleccionarHora"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_recent_history"
+                            app:tint="@color/white"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:contentDescription="@string/seleccionar_hora" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/d_a_de_la_semana"
+                        android:textColor="@color/HintInputs"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="7">
+
+                        <TextView
+                            android:id="@+id/diaLunes"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/l"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_seleccionado" />
+
+                        <TextView
+                            android:id="@+id/diaMartes"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/m"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_no_seleccionado" />
+
+                        <TextView
+                            android:id="@+id/diaMiercoles"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/x"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_no_seleccionado" />
+
+                        <TextView
+                            android:id="@+id/diaJueves"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/j"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_seleccionado" />
+
+                        <TextView
+                            android:id="@+id/diaViernes"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/v"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_no_seleccionado" />
+
+                        <TextView
+                            android:id="@+id/diaSabado"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/s"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_no_seleccionado" />
+
+                        <TextView
+                            android:id="@+id/diaDomingo"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:layout_margin="2dp"
+                            android:text="@string/d"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:background="@drawable/bg_dia_no_seleccionado" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ===== VISTA PREVIA ===== -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vista_previa"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardVistaPrevia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@color/FonoDeIconoColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:id="@+id/containerVistaPrevia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borde_abito"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivPreviewIcono"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/racha"
+                    app:tint="@color/white"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/preview" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPreviewNombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tu_habito_aparecer_aqu"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvPreviewHora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_8_00_pm_l_v"
+                        android:textColor="@color/HintInputs"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/check_abito"
+                    android:contentDescription="@string/check" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnCrearHabito"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/crear_habito"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/ColorBotones"
+            app:cornerRadius="16dp" />
+
+    </LinearLayout>
+</ScrollView>

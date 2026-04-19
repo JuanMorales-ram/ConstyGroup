@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_version_historial.xml
+    IDs usados por ConfiguracionSistemaFragment:
+      tvVerNumero, tvVerDesc, tvVerFecha, tvVerTag, dividerVersion
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
+        <!-- Indicador de línea de tiempo -->
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/bg_dot_green"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- Número de versión + descripción -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="3dp">
+
+                <TextView
+                    android:id="@+id/tvVerNumero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"/>
+
+                <!-- Badge tipo: Actual / Fix / Breaking / Parche -->
+                <TextView
+                    android:id="@+id/tvVerTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvVerDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#8888AA"
+                android:textSize="11sp"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/tvVerFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#555577"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Divisor (se oculta en el último ítem) -->
+    <View
+        android:id="@+id/dividerVersion"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1E1E3A"/>
+
+</LinearLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_categoria_config.xml
+    IDs usados por ConfiguracionSistemaFragment:
+      viewCatColor, tvCatNombre, tvCatMeta, tvCatTag,
+      switchCategoria, btnEditarCategoria, btnEliminarCategoria
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_card_dark"
+    android:padding="12dp"
+    android:layout_marginBottom="6dp">
+
+    <!-- Franja de color de la categoría -->
+    <View
+        android:id="@+id/viewCatColor"
+        android:layout_width="4dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Nombre + meta info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCatNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="3dp"/>
+
+        <TextView
+            android:id="@+id/tvCatMeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#8888AA"
+            android:textSize="11sp"/>
+
+    </LinearLayout>
+
+    <!-- Badge Visible / Oculto -->
+    <TextView
+        android:id="@+id/tvCatTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_marginEnd="8dp"/>
+
+    <!-- Switch visible/oculto -->
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:thumbTint="#FFFFFF"
+        app:trackTint="#2a2a4a"/>
+
+    <!-- Botón editar -->
+    <ImageView
+        android:id="@+id/btnEditarCategoria"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_settings"
+        android:background="@drawable/bg_round_dark"
+        android:padding="5dp"
+        android:layout_marginEnd="6dp"
+        app:tint="#A78BFA"/>
+
+    <!-- Botón eliminar -->
+    <ImageView
+        android:id="@+id/btnEliminarCategoria"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_close"
+        android:background="@drawable/bg_round_dark"
+        android:padding="5dp"
+        app:tint="#F87171"/>
+
+</LinearLayout>
