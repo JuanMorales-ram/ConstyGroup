@@ -22,5 +22,8 @@
     <color name="historial_verde">#2ECC71</color>
     <color name="historial_card_bg">#181C2D</color>
     <color name="historial_dia_vacio">#22263A</color>
+    <color name="bgiconoHabito">#20FFFFFF</color>
+    <color name="grisOscuro">#444444</color>
+
 
 </resources>

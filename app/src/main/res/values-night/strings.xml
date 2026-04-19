@@ -55,5 +55,10 @@
     <string name="agregar_ubicaci_n">Agregar Ubicación</string>
     <string name="completar_sin_agregar">Completar sin agregar</string>
     <string name="TextoAbitocomplejo">¿Quieres agregarle algo en este momento?</string>
+    <string name="volver">Volver</string>
+    <string name="conoce_tu_racha_e_historial_nde_tus_habitos">Conoce tu racha e historial\nde tus habitos</string>
+    <string name="agregar_h_bito">Agregar hábito</string>
+    <string name="_12_dias">12 Dias</string>
+    <string name="meditacion">Meditacion</string>
 
 </resources>
