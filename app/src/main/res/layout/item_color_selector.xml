@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="6dp">
+
+    <!-- Borde blanco de selección -->
+    <View
+        android:id="@+id/vBordeColor"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_color_borde_blanco"
+        android:visibility="gone" />
+
+    <!-- Círculo de color -->
+    <View
+        android:id="@+id/vItemColor"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_gravity="center" />
+
+</FrameLayout>
