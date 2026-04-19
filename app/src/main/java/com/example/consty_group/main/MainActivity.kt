@@ -13,7 +13,7 @@ import com.example.consty_group.R
 import com.example.consty_group.main.abito.HistorialDeAvitosFragment
 import com.example.consty_group.main.abito.HomeFragment
 import com.example.consty_group.main.abito.NuevoAbitoFragment
-import com.example.consty_group.main.abito.RachaDeAvitosFragment
+import com.example.consty_group.main.abito.RachaDeHabitosFragment
 import com.example.consty_group.main.perfil.PerfilFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlin.text.replace
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.AdminAitos -> CargarFragment(HistorialDeAvitosFragment())
                 R.id.NuevAbito -> CargarFragment(NuevoAbitoFragment())
-                R.id.RachaDeAVitos -> CargarFragment(RachaDeAvitosFragment())
+                R.id.RachaDeAVitos -> CargarFragment(RachaDeHabitosFragment())
 
             }
             true

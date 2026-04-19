@@ -55,5 +55,32 @@
     <string name="agregar_ubicaci_n">Agregar Ubicación</string>
     <string name="completar_sin_agregar">Completar sin agregar</string>
     <string name="TextoAbitocomplejo">¿Quieres agregarle algo en este momento?</string>
+    <string name="volver">Volver</string>
+    <string name="conoce_tu_racha_e_historial_nde_tus_habitos">Conoce tu racha e historial\nde tus habitos</string>
+    <string name="agregar_h_bito">Agregar hábito</string>
+    <string name="_12_dias">12 Dias</string>
+    <string name="meditacion">Meditacion</string>
+    <string name="nombre_de_tu_habito">Nombre de tu habito</string>
+    <string name="ej_meditar_10_minutos">Ej: meditar 10 minutos</string>
+    <string name="_0_30">0/30</string>
+    <string name="selecciona_tu_icono">Selecciona tu icono;</string>
+    <string name="puedes_buscarlo">Puedes buscarlo</string>
+    <string name="recordatorio">Recordatorio</string>
+    <string name="_8_00_pm">8:00 PM</string>
+    <string name="seleccionar_hora">Seleccionar hora</string>
+    <string name="d_a_de_la_semana">Día de la semana</string>
+    <string name="l">L</string>
+    <string name="m">M</string>
+    <string name="x">X</string>
+    <string name="j">J</string>
+    <string name="v">V</string>
+    <string name="s">S</string>
+    <string name="d">D</string>
+    <string name="vista_previa">Vista Previa :)</string>
+    <string name="preview">Preview</string>
+    <string name="tu_habito_aparecer_aqu">Tu habito aparecerá aquí</string>
+    <string name="_8_00_pm_l_v">8:00 PM - L/V</string>
+    <string name="check">Check</string>
+    <string name="crear_habito">Crear Habito</string>
 
 </resources>
