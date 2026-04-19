@@ -16,9 +16,9 @@
     <string name="TextBotonRegistro">Esto comienza ahora...</string>
     <string name="FraceMotivacional4">De vuelta al camino del progreso</string>
     <string name="fraceMotivacional5">No te preocupes cosas que pasan :D</string>
-    <string name="TextButtonEnviarCodigo">Enviar Codigo</string>
-    <string name="TextVerificarCodigo">Verificar Codigo</string>
-    <string name="InputTextCodeVerificacion">Codigo de verificacion</string>
+    <string name="TextButtonEnviarCodigo">Enviar Código</string>
+    <string name="TextVerificarCodigo">Verificar Código</string>
+    <string name="InputTextCodeVerificacion">Código de verificación</string>
     <string name="TextCambiarContrasena">Cambiar Contraseña</string>
     <string name="logo">Logo</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -32,10 +32,10 @@
     <string name="_18">18</string>
     <string name="racha_nactual">Racha\nactual</string>
     <string name="_7_d_as_nracha">7 días\nracha</string>
-    <string name="habitos_ndel_dia">Habitos\ndel dia</string>
+    <string name="habitos_ndel_dia">Hábitos\ndel día</string>
     <string name="configuraci_n">Configuración</string>
     <string name="notificaciones">Notificaciones</string>
-    <string name="habitos">Habitos</string>
+    <string name="habitos">Hábitos</string>
     <string name="_0">0</string>
     <string name="mis_logros">Mis logros</string>
     <string name="primer_npaso">Primer\npaso</string>
@@ -52,11 +52,11 @@
     <string name="informaci_n_personal">Información Personal</string>
     <string name="nombre_usuario">Nombre Usuario</string>
     <string name="cerrar_sesi_n">Cerrar Sesión</string>
-    <string name="admin_abitos">Admin Abitos</string>
-    <string name="nuevo_abito">Nuevo abito</string>
-    <string name="racha_de_avitos">Racha De avitos</string>
+    <string name="admin_abitos">Admin Hábitos</string>
+    <string name="nuevo_abito">Nuevo hábito</string>
+    <string name="racha_de_avitos">Racha De hábitos</string>
     <string name="bienvenido">Bienvenido</string>
-    <string name="tus_abitos">Tus Abitos</string>
+    <string name="tus_abitos">Tus Hábitos</string>
     <string name="Texto_Ejemplo">lorem</string>
     <string name="fallidos">Fallidos</string>
     <string name="parciales">Parciales</string>
@@ -78,11 +78,11 @@
     <string name="completar_sin_agregar">Completar sin agregar</string>
     <string name="TextoAbitocomplejo">¿Quieres agregarle algo en este momento?</string>
     <string name="volver">Volver</string>
-    <string name="conoce_tu_racha_e_historial_nde_tus_habitos">Conoce tu racha e historial\nde tus habitos</string>
+    <string name="conoce_tu_racha_e_historial_nde_tus_habitos">Conoce tu racha e historial\nde tus hábitos</string>
     <string name="agregar_h_bito">Agregar hábito</string>
-    <string name="_12_dias">12 Dias</string>
-    <string name="meditacion">Meditacion</string>
-    <string name="nombre_de_tu_habito">Nombre de tu habito</string>
+    <string name="_12_dias">12 Días</string>
+    <string name="meditacion">Meditación</string>
+    <string name="nombre_de_tu_habito">Nombre de tu hábito</string>
     <string name="ej_meditar_10_minutos">Ej: meditar 10 minutos</string>
     <string name="_0_30">0/30</string>
     <string name="selecciona_tu_icono">Selecciona tu icono;</string>
@@ -100,9 +100,9 @@
     <string name="d">D</string>
     <string name="vista_previa">Vista Previa :)</string>
     <string name="preview">Preview</string>
-    <string name="tu_habito_aparecer_aqu">Tu habito aparecerá aquí</string>
+    <string name="tu_habito_aparecer_aqu">Tu hábito aparecerá aquí</string>
     <string name="_8_00_pm_l_v">8:00 PM - L/V</string>
     <string name="check">Check</string>
-    <string name="crear_habito">Crear Habito</string>
+    <string name="crear_habito">Crear Hábito</string>
 
 </resources>
