@@ -82,5 +82,34 @@
     <string name="_8_00_pm_l_v">8:00 PM - L/V</string>
     <string name="check">Check</string>
     <string name="crear_habito">Crear Hábito</string>
+    <string name="todas_las_notificaciones">Todas las notificaciones</string>
+    <string name="activa_o_desactiva_todas_las_notificaciones">Activa o desactiva todas las notificaciones de la aplicación</string>
+    <string name="recordatorios_diarios">Recordatorios Diarios</string>
+    <string name="matutino">Matutino</string>
+    <string name="recordatorio_matutino">Recordatorio Matutino</string>
+    <string name="comenzar_el_d_a_con_motivaci_n">Comenzar el día con motivación</string>
+    <string name="_8_00_am">8:00 AM</string>
+    <string name="cambiar_hora">Cambiar hora</string>
+    <string name="vespertino">Vespertino</string>
+    <string name="recordatorio_vespertino">Recordatorio Vespertino</string>
+    <string name="revisi_n_de_progreso_diario">Revisión de progreso diario</string>
+    <string name="__8_00_pm">8:00 PM</string>
+    <string name="nocturno">Nocturno</string>
+    <string name="recordatorio_nocturno">Recordatorio Nocturno</string>
+    <string name="preparaci_n_para_el_d_a_siguiente">Preparación para el día siguiente</string>
+    <string name="logros_y_motivaci_n">Logros y Motivación</string>
+    <string name="logros">Logros</string>
+    <string name="nuevos_logros">Nuevos Logros</string>
+    <string name="cuando_desbloquees_insignias">Cuando desbloquees insignias</string>
+    <string name="rachas_amp_records"><![CDATA[Rachas & Records]]></string>
+    <string name="celebra_tus_mejores_momentos">Celebra tus mejores momentos</string>
+    <string name="motivacion">Motivacion</string>
+    <string name="mensajes_motivacionales">Mensajes Motivacionales</string>
+    <string name="frases_inspiradoras_diarias">Frases inspiradoras diarias</string>
+    <string name="sonido_y_vibraci_n">Sonido y Vibración</string>
+    <string name="sonido">Sonido</string>
+    <string name="sonido_de_notificaciones">Sonido de Notificaciones</string>
+    <string name="vibracion">Vibracion</string>
+    <string name="vibraci_n">Vibración</string>
 
 </resources>
