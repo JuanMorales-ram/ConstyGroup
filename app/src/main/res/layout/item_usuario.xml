@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_dark"
+    android:layout_marginBottom="8dp"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- AVATAR -->
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/tvAvatar"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_avatar_circle"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvAvatarBadge"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/bg_round_purple"
+                android:gravity="center"
+                android:textSize="7sp"
+                android:text="⚡"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <!-- INFO USUARIO -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="2dp">
+
+                <TextView
+                    android:id="@+id/tvNombreUsuario"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/tvProBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PRO"
+                    android:textColor="#FB923C"
+                    android:textSize="8sp"
+                    android:background="@drawable/bg_badge_pro"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="1dp"
+                    android:layout_marginStart="6dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvEmailUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#8888AA"
+                android:textSize="10sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_marginBottom="6dp" />
+
+            <ProgressBar
+                android:id="@+id/pbProgresoUsuario"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="#1E1E3A" />
+
+        </LinearLayout>
+
+        <!-- RACHA + ESTADO -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_marginStart="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔥"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvRachaUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FB923C"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="2dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvUltimaConexion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#8888AA"
+                android:textSize="9sp"
+                android:layout_marginBottom="3dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/viewStatusDot"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:background="@drawable/bg_dot_green"
+                    android:layout_marginEnd="3dp" />
+
+                <TextView
+                    android:id="@+id/tvEstadoUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activo"
+                    android:textColor="#22C55E"
+                    android:textSize="9sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

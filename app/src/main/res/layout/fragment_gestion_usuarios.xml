@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A1F">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_round_purple"
+                    android:src="@drawable/ic_bolt"
+                    android:padding="6dp"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HabitAdmin"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤 Usuarios"
+                    android:textColor="#A78BFA"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_badge_purple"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginEnd="8dp" />
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_notifications"
+                    android:background="@drawable/bg_round_dark"
+                    android:padding="5dp"
+                    android:tint="#AAAACC" />
+
+            </LinearLayout>
+
+            <!-- TÍTULO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADMINISTRACIÓN"
+                android:textColor="#8888AA"
+                android:textSize="10sp"
+                android:letterSpacing="0.1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gestión de Usuarios"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tvTotalUsuarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8 usuarios registrados en la plataforma"
+                android:textColor="#8888AA"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="14dp" />
+
+            <!-- FILTROS -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gap="8dp">
+
+                    <TextView
+                        android:id="@+id/btnFiltroActivos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6 Activos"
+                        android:textColor="#8888AA"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_filter_inactive"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnFiltroInactivos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Inactivos"
+                        android:textColor="#8888AA"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_filter_inactive"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnFiltroPro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 Pro"
+                        android:textColor="#8888AA"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_filter_inactive"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnFiltroTodos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Todos"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:background="@drawable/bg_filter_active"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- BÚSQUEDA -->
+            <EditText
+                android:id="@+id/etBuscarUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="🔍  Buscar por nombre o email..."
+                android:hintTextColor="#555577"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:background="@drawable/bg_search_field"
+                android:paddingHorizontal="14dp"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:layout_marginBottom="12dp" />
+
+            <!-- ORDENAR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:gap="8dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ordenar:"
+                    android:textColor="#8888AA"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/btnSortRacha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔥 Racha"
+                    android:textColor="#FB923C"
+                    android:textSize="10sp"
+                    android:background="@drawable/bg_sort_active_orange"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+
+                <TextView
+                    android:id="@+id/btnSortProgreso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊 Progreso"
+                    android:textColor="#8888EE"
+                    android:textSize="10sp"
+                    android:background="@drawable/bg_sort_active_purple"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+
+                <TextView
+                    android:id="@+id/btnSortNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="≡ Nombre"
+                    android:textColor="#8888AA"
+                    android:textSize="10sp"
+                    android:background="@drawable/bg_filter_inactive"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+
+            </LinearLayout>
+
+            <!-- CONTADOR RESULTADOS -->
+            <TextView
+                android:id="@+id/tvResultados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8 resultados"
+                android:textColor="#8888AA"
+                android:textSize="10sp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- LISTA DE USUARIOS -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUsuarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="72dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- FAB NUEVO USUARIO -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabNuevoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="+ Nuevo usuario"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        app:backgroundTint="#7C3AED"
+        app:iconTint="#FFFFFF"
+        app:elevation="6dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A1F">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ── HEADER ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_round_purple"
+                    android:src="@drawable/ic_bolt"
+                    android:padding="6dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HabitAdmin"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔔 Notificaciones"
+                    android:textColor="#FB923C"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_badge_orange"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <ImageView
+                    android:id="@+id/btnSettings"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_settings"
+                    android:background="@drawable/bg_round_dark"
+                    android:padding="5dp"
+                    android:tint="#AAAACC"/>
+
+            </LinearLayout>
+
+            <!-- ── TÍTULO ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COMUNICACIÓN"
+                android:textColor="#8888AA"
+                android:textSize="10sp"
+                android:letterSpacing="0.1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notificaciones"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gestiona y envía comunicados a tus usuarios"
+                android:textColor="#8888AA"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- ── TABS ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout
+                    android:id="@+id/tabEnviar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_tab_active"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📤" android:textSize="16sp" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enviar" android:textColor="#FFFFFF" android:textSize="10sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabMensajes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💬" android:textSize="16sp" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mensajes" android:textColor="#8888AA" android:textSize="10sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabProgramar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⏰" android:textSize="16sp" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Programar" android:textColor="#8888AA" android:textSize="10sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabHistorial"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📋" android:textSize="16sp" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Historial" android:textColor="#8888AA" android:textSize="10sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── VISTA PREVIA ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vista previa · HabitTracker"
+                    android:textColor="#8888AA"
+                    android:textSize="9sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_darker"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvPreviewIcon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_round_purple"
+                        android:gravity="center"
+                        android:text="🔔"
+                        android:textSize="18sp"
+                        android:layout_marginEnd="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvPreviewTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Título de la notificación"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tvPreviewBody"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cuerpo del mensaje..."
+                            android:textColor="#8888AA"
+                            android:textSize="10sp"
+                            android:maxLines="2"
+                            android:ellipsize="end"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ahora"
+                            android:textColor="#555577"
+                            android:textSize="9sp"
+                            android:layout_marginTop="3dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── PLANTILLAS RÁPIDAS ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PLANTILLAS RÁPIDAS"
+                android:textColor="#8888AA"
+                android:textSize="10sp"
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="8dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout android:id="@+id/tmplMotivacion" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌅" android:textSize="18sp" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Motivación mañanera" android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¡Buenos días! Hoy es un gran día para..." android:textColor="#8888AA" android:textSize="9sp" android:lineSpacingMultiplier="1.3"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/tmplRecordatorio" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⏰" android:textSize="18sp" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recordatorio hábito" android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No olvides completar tu hábito de..." android:textColor="#8888AA" android:textSize="9sp" android:lineSpacingMultiplier="1.3"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/tmplCelebracion" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥" android:textSize="18sp" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Celebración racha" android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¡Increíble! Llevas X días seguidos..." android:textColor="#8888AA" android:textSize="9sp" android:lineSpacingMultiplier="1.3"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/tmplFinSemana" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎉" android:textSize="18sp" android:layout_marginBottom="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fin de semana" android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¡Es fin de semana! Mantén tus hábitos..." android:textColor="#8888AA" android:textSize="9sp" android:lineSpacingMultiplier="1.3"/>
+                </LinearLayout>
+
+            </GridLayout>
+
+            <!-- ── EMOJI SELECTOR ── -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EMOJI" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="8dp"/>
+            <com.example.consty_group.admin.EmojiSelectorView
+                android:id="@+id/emojiSelector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"/>
+
+            <!-- ── TÍTULO NOTIFICACIÓN ── -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TÍTULO" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="6dp" android:layout_marginTop="12dp"/>
+            <EditText
+                android:id="@+id/etTituloNotif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ej: ¡No te rindas hoy! 💪"
+                android:hintTextColor="#555577"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:background="@drawable/bg_search_field"
+                android:padding="12dp"
+                android:inputType="text"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- ── MENSAJE ── -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MENSAJE" android:textColor="#8888AA" android:textSize="10sp"/>
+                <TextView android:id="@+id/tvCharCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" (0/120)" android:textColor="#8888AA" android:textSize="10sp"/>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/etMensajeNotif"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Escribe un mensaje motivador..."
+                android:hintTextColor="#555577"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:background="@drawable/bg_search_field"
+                android:padding="12dp"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:maxLength="120"
+                android:layout_marginBottom="4dp"/>
+            <TextView android:id="@+id/tvCharCountBottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="0 / 120 caracteres" android:textColor="#555577" android:textSize="9sp" android:gravity="end" android:layout_marginBottom="12dp"/>
+
+            <!-- ── AUDIENCIA ── -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AUDIENCIA" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="8dp"/>
+
+            <LinearLayout android:id="@+id/audTodos" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark_selected" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:layout_marginBottom="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👥" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Todos los usuarios" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvCountTodos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.284" android:textColor="#7C3AED" android:textSize="12sp" android:textStyle="bold" android:layout_marginEnd="8dp"/>
+                <ImageView android:id="@+id/radioTodos" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_radio_on"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/audActivos" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:layout_marginBottom="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Usuarios activos" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="892" android:textColor="#2DD4BF" android:textSize="12sp" android:textStyle="bold" android:layout_marginEnd="8dp"/>
+                <ImageView android:id="@+id/radioActivos" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_radio_off"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/audInactivos" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:layout_marginBottom="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😴" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Usuarios inactivos" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="392" android:textColor="#F87171" android:textSize="12sp" android:textStyle="bold" android:layout_marginEnd="8dp"/>
+                <ImageView android:id="@+id/radioInactivos" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_radio_off"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/audPro" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:layout_marginBottom="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Usuarios Pro" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="347" android:textColor="#FB923C" android:textSize="12sp" android:textStyle="bold" android:layout_marginEnd="8dp"/>
+                <ImageView android:id="@+id/radioPro" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_radio_off"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/audRiesgo" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:layout_marginBottom="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚠️" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="En riesgo abandono" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="221" android:textColor="#F87171" android:textSize="12sp" android:textStyle="bold" android:layout_marginEnd="8dp"/>
+                <ImageView android:id="@+id/radioRiesgo" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_radio_off"/>
+            </LinearLayout>
+
+            <!-- ── PROGRAMAR ENVÍO ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="14dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ℹ️" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Programar envío" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enviar en una hora específica" android:textColor="#8888AA" android:textSize="10sp"/>
+                </LinearLayout>
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchProgramar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    app:thumbTint="#FFFFFF"
+                    app:trackTint="#2a2a4a"/>
+
+            </LinearLayout>
+
+            <!-- ── BOTÓN ENVIAR ── -->
+            <Button
+                android:id="@+id/btnEnviarNotif"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="🔔 Enviar ahora · 1.284 usuarios"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:background="@drawable/bg_btn_purple_gradient"
+                android:stateListAnimator="@null"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

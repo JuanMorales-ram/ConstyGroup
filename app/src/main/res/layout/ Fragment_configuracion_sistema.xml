@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A1F">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ── HEADER ── -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="20dp">
+                <ImageView android:layout_width="32dp" android:layout_height="32dp" android:background="@drawable/bg_round_purple" android:src="@drawable/ic_bolt" android:padding="6dp" android:layout_marginEnd="8dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="HabitAdmin" android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙️ Configuración" android:textColor="#A78BFA" android:textSize="11sp" android:background="@drawable/bg_badge_purple" android:paddingHorizontal="12dp" android:paddingVertical="4dp" android:layout_marginEnd="8dp"/>
+                <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_notifications" android:background="@drawable/bg_round_dark" android:padding="5dp" android:tint="#AAAACC"/>
+            </LinearLayout>
+
+            <!-- ── TÍTULO ── -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ADMINISTRACIÓN" android:textColor="#8888AA" android:textSize="10sp" android:letterSpacing="0.1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Configuración del Sistema" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold" android:layout_marginTop="2dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Personaliza y controla tu aplicación" android:textColor="#8888AA" android:textSize="11sp" android:layout_marginTop="2dp" android:layout_marginBottom="14dp"/>
+
+            <!-- ── TABS ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout android:id="@+id/tabCategorias" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:background="@drawable/bg_tab_active" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏷️" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Categorías" android:textColor="#FFFFFF" android:textSize="10sp"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/tabTextos" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="✏️" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Textos" android:textColor="#8888AA" android:textSize="10sp"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/tabSistema" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙️" android:textSize="15sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sistema" android:textColor="#8888AA" android:textSize="10sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ══════════════════════════════ -->
+            <!-- PANEL: CATEGORÍAS             -->
+            <!-- ══════════════════════════════ -->
+            <LinearLayout android:id="@+id/panelCategorias" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+                <!-- Resumen -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="12dp" android:gap="8dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6" android:textColor="#818CF8" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" android:textColor="#22C55E" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Activas" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <TextView android:id="@+id/tvTotalHabitos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="33" android:textColor="#A78BFA" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hábitos" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Lista de categorías (se llena dinámicamente) -->
+                <LinearLayout android:id="@+id/llCategorias" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+
+                <!-- Agregar categoría -->
+                <TextView
+                    android:id="@+id/btnAgregarCategoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+ Agregar categoría"
+                    android:textColor="#8888AA"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_dashed_border"
+                    android:padding="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="14dp"/>
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════════ -->
+            <!-- PANEL: TEXTOS                 -->
+            <!-- ══════════════════════════════ -->
+            <LinearLayout android:id="@+id/panelTextos" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+
+                <!-- Tip box -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💡 Personaliza los textos de la app. Usa variables como {nombre} o {día} para contenido dinámico."
+                    android:textColor="#8888AA"
+                    android:textSize="10sp"
+                    android:background="@drawable/bg_card_dark"
+                    android:padding="12dp"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Campos de texto -->
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldSaludo"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldSubtitulo"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldVacio"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldRacha"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldCelebracion"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldProgreso"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldBotonHabito"/>
+                <include layout="@layout/item_texto_config" android:id="@+id/fieldConfirmacion"/>
+
+                <Button
+                    android:id="@+id/btnGuardarTextos"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="🔒 Guardar textos"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:background="@drawable/bg_btn_purple_gradient"
+                    android:stateListAnimator="@null"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="14dp"/>
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════════ -->
+            <!-- PANEL: SISTEMA                -->
+            <!-- ══════════════════════════════ -->
+            <LinearLayout android:id="@+id/panelSistema" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+
+                <!-- Info versión -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                        <TextView android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_round_dark" android:gravity="center" android:text="⚡" android:textSize="18sp" android:layout_marginEnd="8dp"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Consty" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                            <TextView android:id="@+id/tvVersionActual" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Versión actual: 1.4.2" android:textColor="#8888AA" android:textSize="10sp"/>
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="● Estable" android:textColor="#22C55E" android:textSize="10sp" android:background="@drawable/bg_badge_green_dark" android:paddingHorizontal="8dp" android:paddingVertical="3dp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="17k" android:textColor="#818CF8" android:textSize="14sp" android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Uso" android:textColor="#8888AA" android:textSize="9sp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8.8+" android:textColor="#2DD4BF" android:textSize="14sp" android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Android" android:textColor="#8888AA" android:textSize="9sp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8.28" android:textColor="#F87171" android:textSize="14sp" android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Flutter" android:textColor="#8888AA" android:textSize="9sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Control de mantenimiento -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙️ Control de Mantenimiento" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="10dp" android:layout_marginBottom="2dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔧" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modo mantenimiento" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Muestra pantalla de mantenimiento a usuarios" android:textColor="#8888AA" android:textSize="9sp"/>
+                        </LinearLayout>
+                        <androidx.appcompat.widget.SwitchCompat android:id="@+id/switchMantenimiento" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" app:thumbTint="#FFFFFF" app:trackTint="#2a2a4a"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingVertical="10dp" android:layout_marginBottom="2dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔄" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Forzar actualización" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Versiones anteriores serán bloqueadas" android:textColor="#8888AA" android:textSize="9sp"/>
+                        </LinearLayout>
+                        <androidx.appcompat.widget.SwitchCompat android:id="@+id/switchForzarActualizacion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" app:thumbTint="#FFFFFF" app:trackTint="#2a2a4a"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingTop="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📦" android:textSize="16sp" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Versión mínima requerida" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"/>
+                        <EditText android:id="@+id/etVersionMinima" android:layout_width="60dp" android:layout_height="wrap_content" android:text="1.3.0" android:textColor="#FFFFFF" android:textSize="11sp" android:background="@drawable/bg_search_field" android:padding="6dp" android:gravity="center" android:layout_marginEnd="8dp"/>
+                        <Button android:id="@+id/btnAplicarVersion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Aplicar" android:textColor="#FFFFFF" android:textSize="10sp" android:background="@drawable/bg_round_purple" android:padding="8dp" android:stateListAnimator="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Desplegar nueva versión -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚀 Desplegar nueva versión" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gap="8dp" android:layout_marginBottom="8dp">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VERSIÓN" android:textColor="#8888AA" android:textSize="9sp" android:layout_marginBottom="4dp"/>
+                            <EditText android:id="@+id/etNuevaVersion" android:layout_width="match_parent" android:layout_height="40dp" android:text="1.4.3" android:textColor="#FFFFFF" android:textSize="12sp" android:background="@drawable/bg_card_darker" android:padding="10dp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AMBIENTE" android:textColor="#8888AA" android:textSize="9sp" android:layout_marginBottom="4dp"/>
+                            <Spinner android:id="@+id/spinnerAmbiente" android:layout_width="match_parent" android:layout_height="40dp" android:background="@drawable/bg_card_darker" android:paddingHorizontal="10dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <EditText android:id="@+id/etNotasRelease" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Notas del release..." android:hintTextColor="#555577" android:textColor="#FFFFFF" android:textSize="12sp" android:background="@drawable/bg_card_darker" android:padding="10dp" android:layout_marginBottom="8dp"/>
+                    <Button android:id="@+id/btnDesplegar" android:layout_width="match_parent" android:layout_height="48dp" android:text="🚀 Desplegar versión" android:textColor="#FFFFFF" android:textSize="12sp" android:background="@drawable/bg_btn_gradient_deploy" android:stateListAnimator="@null"/>
+                </LinearLayout>
+
+                <!-- Historial de versiones -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📋 Historial de versiones" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
+                <LinearLayout android:id="@+id/llHistorialVersiones" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card_dark" android:orientation="vertical" android:paddingHorizontal="14dp" android:layout_marginBottom="16dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

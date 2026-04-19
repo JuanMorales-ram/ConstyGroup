@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A1F">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ── HEADER ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_round_purple"
+                    android:src="@drawable/ic_bolt"
+                    android:padding="6dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HabitAdmin"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊 Reportes"
+                    android:textColor="#A78BFA"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_badge_purple"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/btnExportar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⬆ Exportar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_btn_indigo"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"/>
+
+            </LinearLayout>
+
+            <!-- ── TÍTULO ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ANÁLISIS"
+                android:textColor="#8888AA"
+                android:textSize="10sp"
+                android:letterSpacing="0.1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estadísticas y Reportes"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/tvFechaReporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos actualizados · Febrero 2026"
+                android:textColor="#8888AA"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- ── TABS PERÍODO ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="14dp"
+                android:gap="6dp">
+
+                <TextView
+                    android:id="@+id/tabSemana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semana"
+                    android:textColor="#8888AA"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_filter_inactive"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="5dp"/>
+
+                <TextView
+                    android:id="@+id/tabMes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_filter_active"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="5dp"/>
+
+                <TextView
+                    android:id="@+id/tabAnio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Año"
+                    android:textColor="#8888AA"
+                    android:textSize="11sp"
+                    android:background="@drawable/bg_filter_inactive"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="5dp"/>
+
+            </LinearLayout>
+
+            <!-- ── TARJETAS RESUMEN 3 ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
+                android:gap="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card_dark"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📉" android:textSize="14sp" android:layout_marginBottom="4dp"/>
+                    <TextView android:id="@+id/tvMasAbandono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="46%" android:textColor="#F87171" android:textSize="18sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Más abandono" android:textColor="#8888AA" android:textSize="9sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card_dark"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥" android:textSize="14sp" android:layout_marginBottom="4dp"/>
+                    <TextView android:id="@+id/tvDiaMasActivo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vie" android:textColor="#FB923C" android:textSize="18sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Día más activo" android:textColor="#8888AA" android:textSize="9sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card_dark"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="14sp" android:layout_marginBottom="4dp"/>
+                    <TextView android:id="@+id/tvPromCompletacion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="73%" android:textColor="#2DD4BF" android:textSize="18sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Prom. completación" android:textColor="#8888AA" android:textSize="9sp" android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── HÁBITOS CON MAYOR ABANDONO ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_assignment" android:tint="#A78BFA" android:layout_marginEnd="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hábitos con Mayor Abandono" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="% de usuarios que dejaron el hábito este período" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="12dp"/>
+
+                <!-- Lista de hábitos con abandono — se llena dinámicamente -->
+                <LinearLayout android:id="@+id/llHabitosAbandono" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+
+                <!-- Alerta -->
+                <LinearLayout
+                    android:id="@+id/llAlertaHabito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_alert_warning"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚠️ " android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvAlertaHabito" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dormir 8h tiene la tasa más alta. Considera agregar recordatorios nocturnos." android:textColor="#CC88AA" android:textSize="10sp" android:lineSpacingMultiplier="1.3"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── ACTIVIDAD POR DÍA ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_calendar_today" android:tint="#818CF8" android:layout_marginEnd="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Actividad por Día" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Toca una barra para ver detalles" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="8dp"/>
+
+                <!-- Gráfica de barras por día -->
+                <com.example.consty_group.admin.BarChartView
+                    android:id="@+id/barChartDias"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Info del día seleccionado -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Día seleccionado" android:textColor="#8888AA" android:textSize="10sp"/>
+                        <TextView android:id="@+id/tvDiaSeleccionado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vie" android:textColor="#A78BFA" android:textSize="14sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Completación" android:textColor="#8888AA" android:textSize="10sp"/>
+                        <TextView android:id="@+id/tvCompletacionDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="89%" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sesiones" android:textColor="#8888AA" android:textSize="10sp"/>
+                        <TextView android:id="@+id/tvSesionesDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.168" android:textColor="#2DD4BF" android:textSize="14sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── PROGRESO PROMEDIO POR USUARIO ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_group" android:tint="#A78BFA" android:layout_marginEnd="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Progreso Promedio por Usuario" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Distribución de 1.284 usuarios" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="12dp"/>
+
+                <!-- Donut + leyenda -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="12dp">
+                    <com.example.consty_group.admin.DonutChartView
+                        android:id="@+id/donutProgreso"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_marginEnd="14dp"/>
+                    <LinearLayout android:id="@+id/llLeyendaProgreso" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical"/>
+                </LinearLayout>
+
+                <!-- Barras distribución -->
+                <LinearLayout android:id="@+id/llDistribucion" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="12dp"/>
+
+                <!-- Resumen 3 métricas -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gap="8dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/bg_card_darker" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <TextView android:id="@+id/tvPromedioGeneral" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="73%" android:textColor="#2DD4BF" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Promedio" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/bg_card_darker" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <TextView android:id="@+id/tvTop10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="95%" android:textColor="#818CF8" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Top 10%" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/bg_card_darker" android:orientation="vertical" android:gravity="center" android:padding="10dp">
+                        <TextView android:id="@+id/tvEnRiesgo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="221" android:textColor="#F87171" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="En riesgo" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── TENDENCIA MENSUAL ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_trending_up" android:tint="#818CF8" android:layout_marginEnd="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tendencia Mensual" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Completación % y usuarios activos" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="8dp"/>
+
+                <com.example.consty_group.admin.LineChartView
+                    android:id="@+id/lineChartTendencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="6dp"/>
+
+                <!-- Footer -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginEnd="12dp">
+                        <View android:layout_width="16dp" android:layout_height="2dp" android:background="#7C3AED" android:layout_marginEnd="5dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Completación" android:textColor="#8888AA" android:textSize="10sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="end">
+                        <TextView android:id="@+id/tvCambioTendencia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="▲ +15%" android:textColor="#22C55E" android:textSize="11sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="vs Sep" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end" android:layout_marginStart="12dp">
+                        <TextView android:id="@+id/tvUsuariosFeb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.284" android:textColor="#2DD4BF" android:textSize="11sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="usuarios Feb" android:textColor="#8888AA" android:textSize="9sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── EXPORTAR ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_icon_dark" android:src="@drawable/ic_download" android:padding="8dp" android:tint="#A78BFA" android:layout_marginEnd="12dp"/>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Exportar Reporte Completo" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descarga todos los datos en PDF o CSV\npara compartir con tu equipo" android:textColor="#8888AA" android:textSize="10sp" android:lineSpacingMultiplier="1.3"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Botones exportar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gap="8dp"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/btnExportarPDF"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="📄 Exportar PDF"
+                    android:textColor="#A78BFA"
+                    android:textSize="12sp"
+                    android:background="@drawable/bg_btn_pdf"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/btnExportarCSV"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="📊 Exportar CSV"
+                    android:textColor="#2DD4BF"
+                    android:textSize="12sp"
+                    android:background="@drawable/bg_btn_csv"
+                    android:stateListAnimator="@null"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
