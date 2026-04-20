@@ -106,14 +106,7 @@ class GestionUsuariosFragment : Fragment() {
         )
         botones.forEach { (clave, btn) ->
             btn.setOnClickListener {
-                filtroActual = clave
-                botones.values.forEach { b ->
-                    b.setBackgroundResource(R.drawable.bg_filter_inactive)
-                    b.setTextColor(Color.parseColor("#8888AA"))
-                }
-                btn.setBackgroundResource(R.drawable.bg_filter_active)
-                btn.setTextColor(Color.WHITE)
-                actualizarLista(view)
+
             }
         }
     }
@@ -244,11 +237,11 @@ class UsuariosAdapter(
             if (u.estado == EstadoUsuario.ACTIVO) {
                 tvEstado.text = "Activo"
                 tvEstado.setTextColor(Color.parseColor("#22C55E"))
-                viewDot.setBackgroundResource(R.drawable.bg_dot_green)
+                //viewDot.setBackgroundResource(R.drawable.bg_dot_green)
             } else {
                 tvEstado.text = "Inactivo"
                 tvEstado.setTextColor(Color.parseColor("#F87171"))
-                viewDot.setBackgroundResource(R.drawable.bg_dot_red)
+               // viewDot.setBackgroundResource(R.drawable.bg_dot_red)
             }
         }
     }

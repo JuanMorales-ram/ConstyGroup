@@ -74,7 +74,6 @@
         android:id="@+id/btnEditarCategoria"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:src="@drawable/ic_settings"
         android:background="@drawable/bg_round_dark"
         android:padding="5dp"
         android:layout_marginEnd="6dp"
@@ -85,7 +84,6 @@
         android:id="@+id/btnEliminarCategoria"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:src="@drawable/ic_close"
         android:background="@drawable/bg_round_dark"
         android:padding="5dp"
         app:tint="#F87171"/>

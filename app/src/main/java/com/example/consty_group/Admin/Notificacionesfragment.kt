@@ -52,7 +52,7 @@ class NotificacionesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.Fragment_notificaciones, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_notificaciones, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -76,7 +76,7 @@ class NotificacionesFragment : Fragment() {
         tabs.forEachIndexed { _, tab ->
             tab.setOnClickListener {
                 tabs.forEach { t -> t.setBackgroundResource(0) }
-                tab.setBackgroundResource(R.drawable.bg_tab_active)
+                //tab.setBackgroundResource(R.drawable.bg_tab_active)
                 // TODO: mostrar contenido del tab seleccionado
             }
         }

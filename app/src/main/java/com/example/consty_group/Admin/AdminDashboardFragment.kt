@@ -128,35 +128,7 @@ class AdminDashboardFragment : Fragment() {
         val container = view.findViewById<LinearLayout>(R.id.llHabitosPopulares)
         container.removeAllViews()
 
-        habitosPopulares.forEachIndexed { index, habito ->
-            val itemView = layoutInflater.inflate(
-                R.layout.item_habito_popular,
-                container,
-                false
-            )
 
-            itemView.findViewById<TextView>(R.id.tvHabitoRank).text    = habito.rank
-            itemView.findViewById<TextView>(R.id.tvHabitoEmoji).text   = habito.emoji
-            itemView.findViewById<TextView>(R.id.tvHabitoNombre).text  = habito.nombre
-            itemView.findViewById<TextView>(R.id.tvHabitoUsuarios).text = "${String.format("%,d", habito.usuarios).replace(',', '.')} usuarios"
-            itemView.findViewById<TextView>(R.id.tvHabitoPct).apply {
-                text = "${habito.porcentaje}%"
-                setTextColor(Color.parseColor(habito.colorHex))
-            }
-            itemView.findViewById<ProgressBar>(R.id.pbHabito).apply {
-                progress = habito.porcentaje
-                progressTintList = android.content.res.ColorStateList.valueOf(
-                    Color.parseColor(habito.colorHex)
-                )
-            }
-
-            // Sin divisor en el último item
-            if (index == habitosPopulares.lastIndex) {
-                itemView.findViewById<View>(R.id.dividerHabito).visibility = View.GONE
-            }
-
-            container.addView(itemView)
-        }
     }
 
     private fun configurarFooter(view: View) {
