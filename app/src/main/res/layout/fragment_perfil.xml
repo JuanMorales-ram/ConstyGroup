@@ -330,9 +330,9 @@
                     app:cardCornerRadius="14dp"
                     app:strokeColor="@color/CardPerfil">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:gravity="center_vertical" android:paddingHorizontal="16dp">
-                        <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/ayuda"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/ayuda_y_soporte" android:textColor="@color/white" android:textSize="14sp" />
-                        <ImageView  android:id="@+id/ayudaExpand" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/expandir"/>
+                        <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/icono10"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Ingreso a Admin" android:textColor="@color/white" android:textSize="14sp" />
+                        <ImageView  android:id="@+id/adminExpand" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/expandir"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 

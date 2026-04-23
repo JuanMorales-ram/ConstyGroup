@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A1F">
+    android:background="@color/backgroundAdmin">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,67 +17,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ── HEADER ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="20dp">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/bg_round_purple"
-                    android:src="@drawable/ic_bolt"
-                    android:padding="6dp"
-                    android:layout_marginEnd="8dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="HabitAdmin"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="📊 Reportes"
-                    android:textColor="#A78BFA"
-                    android:textSize="11sp"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="4dp"
-                    android:layout_marginEnd="8dp"/>
-
-                <TextView
-                    android:id="@+id/btnExportar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="⬆ Exportar"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="5dp"/>
-
-            </LinearLayout>
-
             <!-- ── TÍTULO ── -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ANÁLISIS"
-                android:textColor="#8888AA"
-                android:textSize="10sp"
+                android:text="@string/an_lisis"
+                android:textColor="@color/texto1Admin"
+                android:textSize="11sp"
                 android:letterSpacing="0.1"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estadísticas y Reportes"
-                android:textColor="#FFFFFF"
+                android:text="@string/estad_sticas_y_reportes"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_marginTop="2dp"/>
@@ -86,8 +39,8 @@
                 android:id="@+id/tvFechaReporte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Datos actualizados · Febrero 2026"
-                android:textColor="#8888AA"
+                android:text="@string/datos_actualizados_abril_2026"
+                android:textColor="@color/texto1Admin"
                 android:textSize="11sp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="14dp"/>
@@ -97,38 +50,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="14dp"
-                >
+                android:layout_marginBottom="14dp">
 
                 <TextView
                     android:id="@+id/tabSemana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Semana"
-                    android:textColor="#8888AA"
+                    android:text="@string/semana"
+                    android:textColor="@color/texto1Admin"
                     android:textSize="11sp"
                     android:paddingHorizontal="14dp"
-                    android:paddingVertical="5dp"/>
+                    android:paddingVertical="5dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
                 <TextView
                     android:id="@+id/tabMes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mes"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/mes"
+                    android:textColor="@color/texto1Admin"
                     android:textSize="11sp"
                     android:paddingHorizontal="14dp"
-                    android:paddingVertical="5dp"/>
+                    android:paddingVertical="5dp"
+                    android:background="@drawable/bg_tab_selected"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
                 <TextView
                     android:id="@+id/tabAnio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Año"
-                    android:textColor="#8888AA"
+                    android:text="@string/anio"
+                    android:textColor="@color/texto1Admin"
                     android:textSize="11sp"
                     android:paddingHorizontal="14dp"
-                    android:paddingVertical="5dp"/>
+                    android:paddingVertical="5dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
             </LinearLayout>
 
@@ -146,10 +105,25 @@
                     android:background="@drawable/bg_card_dark"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="12dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📉" android:textSize="14sp" android:layout_marginBottom="4dp"/>
-                    <TextView android:id="@+id/tvMasAbandono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="46%" android:textColor="#F87171" android:textSize="18sp" android:textStyle="bold"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Más abandono" android:textColor="#8888AA" android:textSize="9sp" android:gravity="center"/>
+                    android:padding="12dp"
+                    android:layout_marginEnd="5dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/tendencia" android:gravity="center" android:padding="5dp" />
+                    <TextView android:id="@+id/tvMasAbandono" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_46" android:textColor="@color/bajoAdmin" android:textSize="18sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/m_s_abandono" android:textColor="@color/texto1Admin" android:textSize="11sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card_dark"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:layout_marginEnd="5dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/img2estadisticas" android:gravity="center" android:padding="5dp" />
+                    <TextView android:id="@+id/tvDiaMasActivo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vie" android:textColor="@color/medioAdmin" android:textSize="18sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d_a_m_s_activo" android:textColor="@color/texto1Admin" android:textSize="11sp" android:gravity="center"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,22 +134,9 @@
                     android:orientation="vertical"
                     android:gravity="center"
                     android:padding="12dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥" android:textSize="14sp" android:layout_marginBottom="4dp"/>
-                    <TextView android:id="@+id/tvDiaMasActivo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vie" android:textColor="#FB923C" android:textSize="18sp" android:textStyle="bold"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Día más activo" android:textColor="#8888AA" android:textSize="9sp" android:gravity="center"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="14sp" android:layout_marginBottom="4dp"/>
-                    <TextView android:id="@+id/tvPromCompletacion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="73%" android:textColor="#2DD4BF" android:textSize="18sp" android:textStyle="bold"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Prom. completación" android:textColor="#8888AA" android:textSize="9sp" android:gravity="center"/>
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/completacion" android:gravity="center" android:padding="5dp" />
+                    <TextView android:id="@+id/tvPromCompletacion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_73" android:textColor="@color/_2dd4bf_" android:textSize="18sp" android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/completaci_n" android:textColor="@color/texto1Admin" android:textSize="11sp" android:gravity="center"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -189,26 +150,37 @@
                 android:padding="14dp"
                 android:layout_marginBottom="12dp">
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp"  android:tint="#A78BFA" android:layout_marginEnd="8dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hábitos con Mayor Abandono" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/tendencia" android:gravity="center" android:padding="5dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/h_bitos_con_mayor_abandono"
+                        android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold"/>
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="% de usuarios que dejaron el hábito este período" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="12dp"/>
 
-                <!-- Lista de hábitos con abandono — se llena dinámicamente -->
-                <LinearLayout android:id="@+id/llHabitosAbandono" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/de_usuarios_que_dejaron_el_h_bito_este_per_odo"
+                    android:textColor="@color/texto1Admin" android:textSize="11sp" android:layout_marginBottom="12dp"/>
 
-                <!-- Alerta -->
+                <LinearLayout android:id="@+id/llHabitosAbandono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
                 <LinearLayout
                     android:id="@+id/llAlertaHabito"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:background="@drawable/bg_card_dark"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layout_marginTop="10dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚠️ " android:textSize="12sp"/>
-                    <TextView android:id="@+id/tvAlertaHabito" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dormir 8h tiene la tasa más alta. Considera agregar recordatorios nocturnos." android:textColor="#CC88AA" android:textSize="10sp" android:lineSpacingMultiplier="1.3"/>
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/advertencia" android:gravity="center" android:padding="5dp" />
+                    <TextView android:id="@+id/tvAlertaHabito"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/dormir_8h_tiene_la_tasa_m_s_alta_considera_agregar_recordatorios_nocturnos"
+                        android:textColor="@color/cc88aa" android:textSize="11sp" android:lineSpacingMultiplier="1.3"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -222,28 +194,52 @@
                 android:padding="14dp"
                 android:layout_marginBottom="12dp">
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_calendar_today" android:tint="#818CF8" android:layout_marginEnd="8dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Actividad por Día" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/calendario" android:gravity="center" android:padding="5dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/actividad_por_d_a"
+                        android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold"/>
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Toca una barra para ver detalles" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="8dp"/>
 
-                <!-- Gráfica de barras por día -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/toca_una_barra_para_ver_detalles"
+                    android:textColor="@color/texto1Admin" android:textSize="11sp" android:layout_marginBottom="8dp"/>
 
+                <!-- ← ID nuevo para el gráfico generado dinámicamente -->
+                <LinearLayout
+                    android:id="@+id/llActividadChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_marginBottom="8dp"/>
 
                 <!-- Info del día seleccionado -->
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Día seleccionado" android:textColor="#8888AA" android:textSize="10sp"/>
-                        <TextView android:id="@+id/tvDiaSeleccionado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Vie" android:textColor="#A78BFA" android:textSize="14sp" android:textStyle="bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/d_a_seleccionado" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
+                        <TextView android:id="@+id/tvDiaSeleccionado"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/s4" android:textColor="@color/a78bfa" android:textSize="14sp" android:textStyle="bold"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Completación" android:textColor="#8888AA" android:textSize="10sp"/>
-                        <TextView android:id="@+id/tvCompletacionDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="89%" android:textColor="#FFFFFF" android:textSize="14sp" android:textStyle="bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/completaci_n" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
+                        <TextView android:id="@+id/tvCompletacionDia"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/_88" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sesiones" android:textColor="#8888AA" android:textSize="10sp"/>
-                        <TextView android:id="@+id/tvSesionesDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.168" android:textColor="#2DD4BF" android:textSize="14sp" android:textStyle="bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:paddingTop="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/sesiones" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
+                        <TextView android:id="@+id/tvSesionesDia"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/_1_129" android:textColor="@color/_2dd4bf_" android:textSize="14sp" android:textStyle="bold"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -258,38 +254,63 @@
                 android:padding="14dp"
                 android:layout_marginBottom="12dp">
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_group" android:tint="#A78BFA" android:layout_marginEnd="8dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Progreso Promedio por Usuario" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/tiroalblancoadmin" android:gravity="center" android:padding="5dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/progreso_por_rango_de_usuarios"
+                        android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold"/>
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Distribución de 1.284 usuarios" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="12dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/distribuci_n_de_1_284_usuarios"
+                    android:textColor="@color/texto1Admin" android:textSize="11sp" android:layout_marginBottom="12dp"/>
 
                 <!-- Donut + leyenda -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="12dp">
                     <com.example.consty_group.admin.DonutChartView
                         android:id="@+id/donutProgreso"
                         android:layout_width="72dp"
                         android:layout_height="72dp"
                         android:layout_marginEnd="14dp"/>
-                    <LinearLayout android:id="@+id/llLeyendaProgreso" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical"/>
+                    <LinearLayout android:id="@+id/llLeyendaProgreso"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical"/>
                 </LinearLayout>
 
                 <!-- Barras distribución -->
-                <LinearLayout android:id="@+id/llDistribucion" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="12dp"/>
+                <LinearLayout android:id="@+id/llDistribucion"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginBottom="12dp"/>
 
                 <!-- Resumen 3 métricas -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" >
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"  android:orientation="vertical" android:gravity="center" android:padding="10dp">
-                        <TextView android:id="@+id/tvPromedioGeneral" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="73%" android:textColor="#2DD4BF" android:textSize="18sp" android:textStyle="bold"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Promedio" android:textColor="#8888AA" android:textSize="9sp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="10dp"
+                        android:background="@drawable/bg_card_dark">
+                        <TextView android:id="@+id/tvPromedioGeneral"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/_73" android:textColor="@color/_2dd4bf_" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/promedio" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"  android:orientation="vertical" android:gravity="center" android:padding="10dp">
-                        <TextView android:id="@+id/tvTop10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="95%" android:textColor="#818CF8" android:textSize="18sp" android:textStyle="bold"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Top 10%" android:textColor="#8888AA" android:textSize="9sp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="10dp"
+                        android:background="@drawable/bg_card_dark">
+                        <TextView android:id="@+id/tvTop10"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/percent_95" android:textColor="@color/colorMeta" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/top_10" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"  android:orientation="vertical" android:gravity="center" android:padding="10dp">
-                        <TextView android:id="@+id/tvEnRiesgo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="221" android:textColor="#F87171" android:textSize="18sp" android:textStyle="bold"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="En riesgo" android:textColor="#8888AA" android:textSize="9sp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:padding="10dp"
+                        android:background="@drawable/bg_card_dark">
+                        <TextView android:id="@+id/tvEnRiesgo"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/count_221" android:textColor="@color/bajoAdmin" android:textSize="18sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/en_riesgo" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -304,29 +325,54 @@
                 android:padding="14dp"
                 android:layout_marginBottom="12dp">
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp"  android:tint="#818CF8" android:layout_marginEnd="8dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tendencia Mensual" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <ImageView android:layout_width="30dp" android:layout_height="30dp"  android:src="@drawable/tendencia" android:gravity="center" android:padding="5dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/tendencia_mensual"
+                        android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold"/>
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Completación % y usuarios activos" android:textColor="#8888AA" android:textSize="10sp" android:layout_marginBottom="8dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/completacion_ultimos_6_meses"
+                    android:textColor="@color/texto1Admin" android:textSize="11sp" android:layout_marginBottom="8dp"/>
 
+                <!-- ← ID nuevo para gráfico tendencia -->
+                <LinearLayout
+                    android:id="@+id/llTendenciaChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_marginBottom="8dp"/>
 
-
-                <!-- Footer -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginEnd="12dp">
-                        <View android:layout_width="16dp" android:layout_height="2dp" android:background="#7C3AED" android:layout_marginEnd="5dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Completación" android:textColor="#8888AA" android:textSize="10sp"/>
+                <!-- Footer leyenda -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginEnd="12dp">
+                        <View android:layout_width="16dp" android:layout_height="2dp"
+                            android:background="@color/colorMeta" android:layout_marginEnd="5dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/completaci_n" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="end">
-                        <TextView android:id="@+id/tvCambioTendencia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="▲ +15%" android:textColor="#22C55E" android:textSize="11sp" android:textStyle="bold"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="vs Sep" android:textColor="#8888AA" android:textSize="9sp"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="end">
+                        <TextView android:id="@+id/tvCambioTendencia"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/tendencia_positiva_demo" android:textColor="@color/envivoTextAdmin" android:textSize="11sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/vs_sep" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end" android:layout_marginStart="12dp">
-                        <TextView android:id="@+id/tvUsuariosFeb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.284" android:textColor="#2DD4BF" android:textSize="11sp" android:textStyle="bold"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="usuarios Feb" android:textColor="#8888AA" android:textSize="9sp"/>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:gravity="end" android:layout_marginStart="12dp">
+                        <TextView android:id="@+id/tvUsuariosFeb"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/_1_284" android:textColor="@color/_2dd4bf_" android:textSize="11sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/usuarios_activos_label" android:textColor="@color/texto1Admin" android:textSize="11sp"/>
                     </LinearLayout>
                 </LinearLayout>
+
             </LinearLayout>
 
             <!-- ── EXPORTAR ── -->
@@ -334,46 +380,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_card_dark"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
+                android:orientation="vertical"
                 android:padding="14dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="4dp">
 
-                <ImageView android:layout_width="40dp" android:layout_height="40dp" android:padding="8dp" android:tint="#A78BFA" android:layout_marginEnd="12dp"/>
-
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Exportar Reporte Completo" android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" android:layout_marginBottom="3dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descarga todos los datos en PDF o CSV\npara compartir con tu equipo" android:textColor="#8888AA" android:textSize="10sp" android:lineSpacingMultiplier="1.3"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="4dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="@string/exportar_reporte_completo"
+                        android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold"/>
                 </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/descarga_datos_reporte"
+                    android:textColor="@color/texto1Admin" android:textSize="11sp" android:layout_marginBottom="12dp"/>
 
-            </LinearLayout>
-
-            <!-- Botones exportar -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <Button
-                    android:id="@+id/btnExportarPDF"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="📄 Exportar PDF"
-                    android:textColor="#A78BFA"
-                    android:textSize="12sp"
-                    android:stateListAnimator="@null"/>
-
-                <Button
-                    android:id="@+id/btnExportarCSV"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="📊 Exportar CSV"
-                    android:textColor="#2DD4BF"
-                    android:textSize="12sp"
-                    android:stateListAnimator="@null"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btnExportarPDF"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/btn_pdf"
+                        android:textColor="@color/a78bfa"
+                        android:textSize="12sp"
+                        android:backgroundTint="@color/bg_export_pdf"
+                        android:stateListAnimator="@null"/>
+                    <Button
+                        android:id="@+id/btnExportarCSV"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_csv"
+                        android:textColor="@color/_2dd4bf_"
+                        android:textSize="12sp"
+                        android:backgroundTint="@color/bg_export_csv"
+                        android:stateListAnimator="@null"/>
+                </LinearLayout>
 
             </LinearLayout>
 

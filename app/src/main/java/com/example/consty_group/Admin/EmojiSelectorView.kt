@@ -8,12 +8,13 @@ import android.view.Gravity
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import com.example.consty_group.R
 
 /**
  * EmojiSelectorView
  * ─────────────────
  * Selector horizontal de emojis para el compositor de notificaciones.
- * Archivo nuevo — no modifica nada existente.
  */
 class EmojiSelectorView @JvmOverloads constructor(
     context: Context,
@@ -81,10 +82,8 @@ class EmojiSelectorView @JvmOverloads constructor(
 
     private fun bgFor(emoji: String) = GradientDrawable().apply {
         shape = GradientDrawable.OVAL
-        setColor(
-            if (emoji == selectedEmoji) Color.parseColor("#7C3AED")
-            else Color.parseColor("#1E1E3A")
-        )
+        val colorRes = if (emoji == selectedEmoji) R.color.todosUsuarios else R.color.progressBarVacia
+        setColor(ContextCompat.getColor(context, colorRes))
     }
 
     private fun dp(value: Int) =

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundAdmin">
+
+    <!-- ── TOP NAV ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/destello"
+            android:background="@drawable/bg_round_purple"
+            android:padding="5dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/habitadmin"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEnVivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/en_vivo"
+            android:textColor="@color/envivoTextAdmin"
+            android:textSize="10sp"
+            android:background="@drawable/bg_badge_green"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:layout_marginEnd="8dp" />
+
+        <ImageView
+            android:id="@+id/imgBellAdmin"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/campana"
+            android:background="@drawable/bg_round_dark"
+            android:padding="5dp" />
+
+    </LinearLayout>
+
+    <!-- ── FRAGMENT CONTAINER ── -->
+    <FrameLayout
+        android:id="@+id/adminFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- ── TAB BAR ── -->
+    <LinearLayout
+        android:id="@+id/adminTabBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/tabBarAdminBackground"
+        android:elevation="8dp">
+
+        <!-- Tab Dashboard -->
+        <LinearLayout
+            android:id="@+id/tabDashboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/tabIconDashboard"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/dashboard" />
+
+            <TextView
+                android:id="@+id/tabLabelDashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard"
+                android:textColor="@color/colorMeta"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:layout_marginTop="3dp" />
+
+            <View
+                android:id="@+id/tabDotDashboard"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_round_purple"
+                android:layout_marginTop="3dp" />
+
+        </LinearLayout>
+
+        <!-- Tab Usuarios -->
+        <LinearLayout
+            android:id="@+id/tabUsuarios"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/tabIconUsuarios"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icono10" />
+
+            <TextView
+                android:id="@+id/tabLabelUsuarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/usuarios"
+                android:textColor="@color/tabUnselected"
+                android:textSize="9sp"
+                android:layout_marginTop="3dp" />
+
+            <View
+                android:id="@+id/tabDotUsuarios"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_round_purple"
+                android:layout_marginTop="3dp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <!-- Tab Estadísticas -->
+        <LinearLayout
+            android:id="@+id/tabEstadisticas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/tabIconEstadisticas"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tendencia" />
+
+            <TextView
+                android:id="@+id/tabLabelEstadisticas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/estad_sticas"
+                android:textColor="@color/tabUnselected"
+                android:textSize="9sp"
+                android:layout_marginTop="3dp" />
+
+            <View
+                android:id="@+id/tabDotEstadisticas"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_round_purple"
+                android:layout_marginTop="3dp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <!-- Tab Notificaciones -->
+        <LinearLayout
+            android:id="@+id/tabNotificaciones"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/tabIconNotificaciones"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/megafono" />
+
+            <TextView
+                android:id="@+id/tabLabelNotificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notifs"
+                android:textColor="@color/tabUnselected"
+                android:textSize="9sp"
+                android:layout_marginTop="3dp" />
+
+            <View
+                android:id="@+id/tabDotNotificaciones"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_round_purple"
+                android:layout_marginTop="3dp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

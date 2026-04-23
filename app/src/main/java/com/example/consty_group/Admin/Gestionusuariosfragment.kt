@@ -1,7 +1,6 @@
 package com.example.consty_group.admin
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,13 +43,6 @@ data class Usuario(
  * GestionUsuariosFragment
  * ───────────────────────
  * Pantalla de gestión de usuarios del panel admin.
- * Archivo nuevo — NO modifica ningún archivo existente.
- *
- * Para navegar aquí:
- *   supportFragmentManager.beginTransaction()
- *       .replace(R.id.fragmentContainer, GestionUsuariosFragment())
- *       .addToBackStack(null)
- *       .commit()
  */
 class GestionUsuariosFragment : Fragment() {
 
@@ -57,7 +50,6 @@ class GestionUsuariosFragment : Fragment() {
     private var filtroActual = "todos"
     private var ordenActual  = "racha"
 
-    // ── Datos de ejemplo (reemplazar con BD o API real) ──
     private val todosLosUsuarios = listOf(
         Usuario(1, "Andrés Torres",  "andres@email.com",  "🧑",  31, 90, true,  EstadoUsuario.ACTIVO,   "Hoy"),
         Usuario(2, "Sofía Martínez", "sofia@email.com",   "👩",  24, 75, true,  EstadoUsuario.ACTIVO,   "Hoy"),
@@ -85,18 +77,14 @@ class GestionUsuariosFragment : Fragment() {
         actualizarLista(view)
     }
 
-    // ── RecyclerView ──
     private fun configurarRecyclerView(view: View) {
-        adapter = UsuariosAdapter(emptyList()) { usuario ->
-            // TODO: navegar a detalle del usuario
-        }
+        adapter = UsuariosAdapter(emptyList()) { usuario -> }
         view.findViewById<RecyclerView>(R.id.rvUsuarios).apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@GestionUsuariosFragment.adapter
         }
     }
 
-    // ── Filtros ──
     private fun configurarFiltros(view: View) {
         val botones = mapOf(
             "activos"   to view.findViewById<TextView>(R.id.btnFiltroActivos),
@@ -106,12 +94,12 @@ class GestionUsuariosFragment : Fragment() {
         )
         botones.forEach { (clave, btn) ->
             btn.setOnClickListener {
-
+                filtroActual = clave
+                actualizarLista(view)
             }
         }
     }
 
-    // ── Búsqueda ──
     private fun configurarBusqueda(view: View) {
         view.findViewById<EditText>(R.id.etBuscarUsuario)
             .addTextChangedListener(object : TextWatcher {
@@ -123,31 +111,25 @@ class GestionUsuariosFragment : Fragment() {
             })
     }
 
-    // ── Ordenar ──
     private fun configurarOrden(view: View) {
-        view.findViewById<TextView>(R.id.btnSortRacha).setOnClickListener {
+        view.findViewById<View>(R.id.btnSortRacha).setOnClickListener {
             ordenActual = "racha"; actualizarLista(view)
         }
-        view.findViewById<TextView>(R.id.btnSortProgreso).setOnClickListener {
+        view.findViewById<View>(R.id.btnSortProgreso).setOnClickListener {
             ordenActual = "progreso"; actualizarLista(view)
         }
-        view.findViewById<TextView>(R.id.btnSortNombre).setOnClickListener {
+        view.findViewById<View>(R.id.btnSortNombre).setOnClickListener {
             ordenActual = "nombre"; actualizarLista(view)
         }
     }
 
-    // ── FAB ──
     private fun configurarFab(view: View) {
-        view.findViewById<ExtendedFloatingActionButton>(R.id.fabNuevoUsuario).setOnClickListener {
-            // TODO: abrir formulario para crear usuario
-        }
+        view.findViewById<ExtendedFloatingActionButton>(R.id.fabNuevoUsuario).setOnClickListener { }
     }
 
-    // ── Filtrar + ordenar + actualizar ──
     private fun actualizarLista(view: View, query: String = "") {
         var lista = todosLosUsuarios
 
-        // Filtro por estado / tipo
         lista = when (filtroActual) {
             "activos"   -> lista.filter { it.estado == EstadoUsuario.ACTIVO }
             "inactivos" -> lista.filter { it.estado == EstadoUsuario.INACTIVO }
@@ -155,7 +137,6 @@ class GestionUsuariosFragment : Fragment() {
             else        -> lista
         }
 
-        // Búsqueda
         if (query.isNotBlank()) {
             lista = lista.filter {
                 it.nombre.contains(query, ignoreCase = true) ||
@@ -163,7 +144,6 @@ class GestionUsuariosFragment : Fragment() {
             }
         }
 
-        // Orden
         lista = when (ordenActual) {
             "racha"    -> lista.sortedByDescending { it.racha }
             "progreso" -> lista.sortedByDescending { it.progreso }
@@ -172,7 +152,8 @@ class GestionUsuariosFragment : Fragment() {
         }
 
         adapter.actualizar(lista)
-        view.findViewById<TextView>(R.id.tvResultados).text = "${lista.size} resultados"
+        val resultadosStr = getString(R.string.resultados_8).replace("8", "${lista.size}")
+        view.findViewById<TextView>(R.id.tvResultados).text = resultadosStr
     }
 }
 
@@ -204,6 +185,7 @@ class UsuariosAdapter(
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(u: Usuario, onClick: (Usuario) -> Unit) {
+            val context = itemView.context
             itemView.setOnClickListener { onClick(u) }
 
             itemView.findViewById<TextView>(R.id.tvAvatar).text        = u.avatar
@@ -212,36 +194,25 @@ class UsuariosAdapter(
             itemView.findViewById<TextView>(R.id.tvRachaUsuario).text   = "${u.racha}"
             itemView.findViewById<TextView>(R.id.tvUltimaConexion).text = u.ultimaConexion
 
-            // Badge PRO
-            val tvPro = itemView.findViewById<TextView>(R.id.tvProBadge)
-            tvPro.visibility = if (u.esPro) View.VISIBLE else View.GONE
+            itemView.findViewById<TextView>(R.id.tvProBadge).visibility = if (u.esPro) View.VISIBLE else View.GONE
+            itemView.findViewById<TextView>(R.id.tvAvatarBadge).visibility = if (u.esPro) View.VISIBLE else View.GONE
 
-            // Badge de avatar (solo pro)
-            val tvBadge = itemView.findViewById<TextView>(R.id.tvAvatarBadge)
-            tvBadge.visibility = if (u.esPro) View.VISIBLE else View.GONE
-
-            // Progreso
-            val colorBarra = if (u.estado == EstadoUsuario.ACTIVO) "#7C3AED" else "#F87171"
+            val colorBarraRes = if (u.estado == EstadoUsuario.ACTIVO) R.color.todosUsuarios else R.color.bajoAdmin
             val pb = itemView.findViewById<ProgressBar>(R.id.pbProgresoUsuario)
             pb.progress = u.progreso
-            pb.progressTintList = ColorStateList.valueOf(Color.parseColor(colorBarra))
+            pb.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(context, colorBarraRes))
 
-            // Racha color
-            val rachaColor = if (u.racha > 0) "#FB923C" else "#F87171"
+            val rachaColorRes = if (u.racha > 0) R.color.medioAdmin else R.color.bajoAdmin
             itemView.findViewById<TextView>(R.id.tvRachaUsuario)
-                .setTextColor(Color.parseColor(rachaColor))
+                .setTextColor(ContextCompat.getColor(context, rachaColorRes))
 
-            // Estado
             val tvEstado = itemView.findViewById<TextView>(R.id.tvEstadoUsuario)
-            val viewDot  = itemView.findViewById<View>(R.id.viewStatusDot)
             if (u.estado == EstadoUsuario.ACTIVO) {
-                tvEstado.text = "Activo"
-                tvEstado.setTextColor(Color.parseColor("#22C55E"))
-                //viewDot.setBackgroundResource(R.drawable.bg_dot_green)
+                tvEstado.text = context.getString(R.string.activo)
+                tvEstado.setTextColor(ContextCompat.getColor(context, R.color.envivoTextAdmin))
             } else {
-                tvEstado.text = "Inactivo"
-                tvEstado.setTextColor(Color.parseColor("#F87171"))
-               // viewDot.setBackgroundResource(R.drawable.bg_dot_red)
+                tvEstado.text = context.getString(R.string.inactivo)
+                tvEstado.setTextColor(ContextCompat.getColor(context, R.color.bajoAdmin))
             }
         }
     }

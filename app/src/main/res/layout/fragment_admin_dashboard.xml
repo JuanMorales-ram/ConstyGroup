@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A1F"
+    android:background="@color/backgroundAdmin"
     android:fillViewport="true">
 
     <LinearLayout
@@ -25,17 +24,17 @@
                 android:id="@+id/imgLogoAdmin"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:src="@drawable/destello"
                 android:background="@drawable/bg_round_purple"
                 android:padding="6dp"
-                android:src="@drawable/ic_bolt"
                 android:layout_marginEnd="8dp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="HabitAdmin"
-                android:textColor="#FFFFFF"
+                android:text="@string/habitadmin"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -43,9 +42,9 @@
                 android:id="@+id/tvEnVivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="● En vivo"
-                android:textColor="#22C55E"
-                android:textSize="10sp"
+                android:text="@string/en_vivo"
+                android:textColor="@color/envivoTextAdmin"
+                android:textSize="11sp"
                 android:background="@drawable/bg_badge_green"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="3dp"
@@ -55,10 +54,9 @@
                 android:id="@+id/imgBell"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/ic_notifications"
+                android:src="@drawable/campana"
                 android:background="@drawable/bg_round_dark"
-                android:padding="5dp"
-                android:tint="#AAAACC" />
+                android:padding="5dp" />
 
         </LinearLayout>
 
@@ -66,16 +64,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PANEL DE ADMINISTRADOR"
-            android:textColor="#8888AA"
-            android:textSize="10sp"
+            android:text="@string/panel_de_administrador"
+            android:textColor="@color/texto1Admin"
+            android:textSize="11sp"
             android:letterSpacing="0.1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resumen General"
-            android:textColor="#FFFFFF"
+            android:text="@string/resumen_general"
+            android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginTop="2dp" />
@@ -84,7 +82,8 @@
             android:id="@+id/tvFechaAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#8888AA"
+            android:textColor="@color/texto1Admin"
+            android:text="@string/aqui_va_la_fecha"
             android:textSize="11sp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="16dp" />
@@ -110,7 +109,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_group"
+                    android:src="@drawable/usuariosadmin"
                     android:background="@drawable/bg_icon_blue"
                     android:padding="6dp"
                     android:layout_marginBottom="10dp" />
@@ -119,26 +118,26 @@
                     android:id="@+id/tvTotalUsuarios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.284"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/_1_284"
+                    android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Usuarios totales"
-                    android:textColor="#8888AA"
-                    android:textSize="10sp"
+                    android:text="@string/usuarios_totales"
+                    android:textColor="@color/texto1Admin"
+                    android:textSize="11sp"
                     android:layout_marginBottom="6dp" />
 
                 <TextView
                     android:id="@+id/tvCambioUsuarios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="▲ +38 este mes"
-                    android:textColor="#22C55E"
-                    android:textSize="10sp" />
+                    android:text="@string/_38_este_mes"
+                    android:textColor="@color/envivoTextAdmin"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- Tasa Completación -->
@@ -154,7 +153,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_check_circle"
+                    android:src="@drawable/chulitoadmin"
                     android:background="@drawable/bg_icon_green"
                     android:padding="6dp"
                     android:layout_marginBottom="10dp" />
@@ -163,26 +162,26 @@
                     android:id="@+id/tvTasaCompletacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="73%"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/_73"
+                    android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tasa completación"
-                    android:textColor="#8888AA"
-                    android:textSize="10sp"
+                    android:text="@string/tasa_completaci_n"
+                    android:textColor="@color/texto1Admin"
+                    android:textSize="11sp"
                     android:layout_marginBottom="6dp" />
 
                 <TextView
                     android:id="@+id/tvCambioCompletacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="▲ +5% vs sem. ant."
-                    android:textColor="#22C55E"
-                    android:textSize="10sp" />
+                    android:text="@string/_5_vs_sem_ant"
+                    android:textColor="@color/envivoTextAdmin"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- Activos Hoy -->
@@ -198,7 +197,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_local_fire"
+                    android:src="@drawable/img2estadisticas"
                     android:background="@drawable/bg_icon_orange"
                     android:padding="6dp"
                     android:layout_marginBottom="10dp" />
@@ -207,26 +206,26 @@
                     android:id="@+id/tvActivosHoy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="347"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/_347"
+                    android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Activos hoy"
-                    android:textColor="#8888AA"
-                    android:textSize="10sp"
+                    android:text="@string/activos_hoy"
+                    android:textColor="@color/texto1Admin"
+                    android:textSize="11sp"
                     android:layout_marginBottom="6dp" />
 
                 <TextView
                     android:id="@+id/tvPctActivosHoy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="27% del total"
-                    android:textColor="#FB923C"
-                    android:textSize="10sp" />
+                    android:text="@string/_27_del_total"
+                    android:textColor="@color/medioAdmin"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- Activos esta semana -->
@@ -242,7 +241,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_calendar_today"
+                    android:src="@drawable/calendarioadmin"
                     android:background="@drawable/bg_icon_red"
                     android:padding="6dp"
                     android:layout_marginBottom="10dp" />
@@ -251,26 +250,26 @@
                     android:id="@+id/tvActivosSemana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="892"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/_892"
+                    android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Activos esta sem."
-                    android:textColor="#8888AA"
-                    android:textSize="10sp"
+                    android:text="@string/activos_esta_semana"
+                    android:textColor="@color/texto1Admin"
+                    android:textSize="11sp"
                     android:layout_marginBottom="6dp" />
 
                 <TextView
                     android:id="@+id/tvPctActivosSemana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="69% del total"
-                    android:textColor="#F87171"
-                    android:textSize="10sp" />
+                    android:text="@string/_69_del_total"
+                    android:textColor="@color/bajoAdmin"
+                    android:textSize="11sp" />
             </LinearLayout>
         </GridLayout>
 
@@ -293,15 +292,14 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_track_changes"
-                    android:tint="#A78BFA"
+                    android:src="@drawable/tiroalblancoadmin"
                     android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Completación General"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/completaci_n_general"
+                    android:textColor="@color/white"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -309,9 +307,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Promedio diario de todos los hábitos activos en la plataforma"
-                android:textColor="#8888AA"
-                android:textSize="10sp"
+                android:text="@string/promedio_diario_de_todos_los_h_bitos_activos_en_la_plataforma"
+                android:textColor="@color/texto1Admin"
+                android:textSize="11sp"
                 android:layout_marginBottom="12dp" />
 
             <LinearLayout
@@ -325,8 +323,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                   >
+                    android:gravity="center_vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -336,14 +333,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Meta"
-                            android:textColor="#8888AA"
-                            android:textSize="10sp" />
+                            android:text="@string/meta"
+                            android:textColor="@color/texto1Admin"
+                            android:textSize="11sp" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="80%"
-                            android:textColor="#818CF8"
+                            android:text="@string/_80"
+                            android:textColor="@color/colorMeta"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -355,27 +352,109 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Actual"
-                            android:textColor="#8888AA"
-                            android:textSize="10sp" />
+                            android:text="@string/actual"
+                            android:textColor="@color/texto1Admin"
+                            android:textSize="11sp" />
                         <TextView
                             android:id="@+id/tvCompletacionActual"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="73%"
-                            android:textColor="#A78BFA"
+                            android:text="@string/_73_"
+                            android:textColor="@color/actual"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Donut chart placeholder -->
                 <com.example.consty_group.admin.DonutChartView
                     android:id="@+id/donutChart"
                     android:layout_width="64dp"
                     android:layout_height="64dp" />
 
             </LinearLayout>
+        </LinearLayout>
+
+        <!-- TARJETA TENDENCIA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:layout_marginBottom="12dp">
+
+            <!-- Header con tabs -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/tendencia"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tendencia"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <!-- Tab Semana -->
+                <TextView
+                    android:id="@+id/tabSemana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semana_"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tab_selected"
+                    android:textColor="@color/white"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- Tab Mes -->
+                <TextView
+                    android:id="@+id/tabMes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mes_"
+                    android:textSize="10sp"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:textColor="@color/texto1Admin"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- Área del gráfico de barras -->
+            <LinearLayout
+                android:id="@+id/llChartArea"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Leyenda pico -->
+            <TextView
+                android:id="@+id/tvPicoActividad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pico_de_actividad_semana"
+                android:textColor="@color/texto1Admin"
+                android:textSize="11sp" />
+
         </LinearLayout>
 
         <!-- TARJETA USUARIOS ACTIVOS -->
@@ -395,17 +474,17 @@
                 android:layout_marginBottom="12dp">
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_bolt"
-                    android:tint="#FACC15"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/destello"
+                    android:padding="6dp"
                     android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Usuarios Activos"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/usuarios_activos"
+                    android:textColor="@color/white"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -413,28 +492,28 @@
             <!-- Activos hoy -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="10dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="5dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Activos hoy" android:textColor="#CCCCCC" android:textSize="11sp" />
-                    <TextView android:id="@+id/tvActivosHoyLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="347 / 1.284" android:textColor="#F87171" android:textSize="11sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/activos_hoy_" android:textColor="@color/texto1Admin" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvActivosHoyLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_347_1_284" android:textColor="@color/bajoAdmin" android:textSize="11sp" android:textStyle="bold" />
                 </LinearLayout>
-                <ProgressBar android:id="@+id/pbActivosHoy" style="@style/Widget.AppCompat.ProgressBar.Horizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="27" android:progressTint="#F87171" android:progressBackgroundTint="#1E1E3A" />
+                <ProgressBar android:id="@+id/pbActivosHoy" style="@style/Widget.AppCompat.ProgressBar.Horizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="27" android:progressTint="@color/bajoAdmin" android:progressBackgroundTint="@color/progressBarVacia" />
             </LinearLayout>
 
             <!-- Esta semana -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="10dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="5dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Esta semana" android:textColor="#CCCCCC" android:textSize="11sp" />
-                    <TextView android:id="@+id/tvActivosSemanaLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="892 / 1.284" android:textColor="#60A5FA" android:textSize="11sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/esta_semana_" android:textColor="@color/texto1Admin" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvActivosSemanaLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_892_1_284" android:textColor="@color/progressEstaSemana" android:textSize="11sp" android:textStyle="bold" />
                 </LinearLayout>
-                <ProgressBar android:id="@+id/pbActivosSemana" style="@style/Widget.AppCompat.ProgressBar.Horizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="69" android:progressTint="#60A5FA" android:progressBackgroundTint="#1E1E3A" />
+                <ProgressBar android:id="@+id/pbActivosSemana" style="@style/Widget.AppCompat.ProgressBar.Horizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="69" android:progressTint="@color/progressEstaSemana" android:progressBackgroundTint="@color/progressBarVacia" />
             </LinearLayout>
 
             <!-- Este mes -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="5dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Este mes" android:textColor="#CCCCCC" android:textSize="11sp" />
-                    <TextView android:id="@+id/tvActivosMesLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.100 / 1.284" android:textColor="#A78BFA" android:textSize="11sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/este_mes" android:textColor="@color/texto1Admin" android:textSize="11sp" />
+                    <TextView android:id="@+id/tvActivosMesLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_1_100_1_284" android:textColor="@color/progressEsteMes" android:textSize="11sp" android:textStyle="bold" />
                 </LinearLayout>
-                <ProgressBar android:id="@+id/pbActivosMes" style="@style/Widget.AppCompat.ProgressBar.Horizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="85" android:progressTint="#A78BFA" android:progressBackgroundTint="#1E1E3A" />
+                <ProgressBar android:id="@+id/pbActivosMes" style="@style/Widget.AppCompat.ProgressBar.Horizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="85" android:progressTint="@color/progressEsteMes" android:progressBackgroundTint="@color/progressBarVacia" />
             </LinearLayout>
 
         </LinearLayout>
@@ -447,19 +526,18 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="★"
-                android:textColor="#FACC15"
-                android:textSize="14sp"
-                android:layout_marginEnd="6dp" />
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/img3estadisticas"
+                android:padding="6dp"
+                android:layout_marginEnd="8dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hábitos más Populares"
-                android:textColor="#FFFFFF"
+                android:text="@string/h_bitos_m_s_populares"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -480,9 +558,9 @@
             android:id="@+id/tvUltimaActualizacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Última actualización: hace 2 minutos · HabitTracker Admin v1.0"
-            android:textColor="#555577"
-            android:textSize="9sp"
+            android:text="@string/ltima_actualizaci_"
+            android:textColor="@color/texto1Admin"
+            android:textSize="11sp"
             android:gravity="center"
             android:layout_marginBottom="8dp" />
 

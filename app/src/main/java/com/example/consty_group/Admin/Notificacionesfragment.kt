@@ -1,6 +1,5 @@
 package com.example.consty_group.admin
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,17 +25,13 @@ class NotificacionesFragment : Fragment() {
     private var contadorAudiencia = 1284
 
     // ── Plantillas ──
-    data class Plantilla(val titulo: String, val emoji: String, val mensaje: String)
+    data class Plantilla(val tituloRes: Int, val emoji: String, val mensajeRes: Int)
 
-    private val plantillas = mapOf(
-        "motivacion"  to Plantilla("Motivación mañanera",  "🌅",
-            "¡Buenos días! Hoy es un gran día para cumplir tus hábitos. ¡Tú puedes!"),
-        "recordatorio" to Plantilla("Recordatorio hábito", "⏰",
-            "No olvides completar tu hábito de hoy. ¡Cada día cuenta!"),
-        "celebracion" to Plantilla("Celebración racha",    "🔥",
-            "¡Increíble! Llevas X días seguidos cumpliendo tus hábitos. ¡Sigue así!"),
-        "finsemana"   to Plantilla("Fin de semana",        "🎉",
-            "¡Es fin de semana! Mantén tus hábitos y cierra la semana con éxito.")
+    private val plantillasMap = mapOf(
+        "motivacion"  to Plantilla(R.string.motivaci_n_ma_anera,  "🌅", R.string.buenos_d_as_hoy_es_un_gran_d_a_para),
+        "recordatorio" to Plantilla(R.string.recordatorio_h_bito, "⏰", R.string.no_olvides_completar_tu_h_bito_de),
+        "celebracion" to Plantilla(R.string.celebraci_n_racha,    "🔥", R.string.incre_ble_llevas_x_d_as_seguidos),
+        "finsemana"   to Plantilla(R.string.fin_de_semana,        "🎉", R.string.es_fin_de_semana)
     )
 
     // ── Audiencias ──
@@ -58,14 +53,15 @@ class NotificacionesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         configurarTabs(view)
         configurarPlantillas(view)
-        configurarEmojiSelector(view)   // ← NUEVO: conecta EmojiSelectorView
+        configurarEmojiSelector(view)
         configurarCampos(view)
         configurarAudiencias(view)
         configurarSwitch(view)
         configurarBotonEnviar(view)
+        actualizarPreview(view)
+        actualizarBoton(view)
     }
 
-    // ── Tabs ──
     private fun configurarTabs(view: View) {
         val tabs = listOf(
             view.findViewById<LinearLayout>(R.id.tabEnviar),
@@ -73,16 +69,13 @@ class NotificacionesFragment : Fragment() {
             view.findViewById<LinearLayout>(R.id.tabProgramar),
             view.findViewById<LinearLayout>(R.id.tabHistorial)
         )
-        tabs.forEachIndexed { _, tab ->
+        tabs.forEach { tab ->
             tab.setOnClickListener {
                 tabs.forEach { t -> t.setBackgroundResource(0) }
-                //tab.setBackgroundResource(R.drawable.bg_tab_active)
-                // TODO: mostrar contenido del tab seleccionado
             }
         }
     }
 
-    // ── Plantillas ──
     private fun configurarPlantillas(view: View) {
         mapOf(
             R.id.tmplMotivacion   to "motivacion",
@@ -91,19 +84,16 @@ class NotificacionesFragment : Fragment() {
             R.id.tmplFinSemana    to "finsemana"
         ).forEach { (viewId, clave) ->
             view.findViewById<View>(viewId).setOnClickListener {
-                val p = plantillas[clave] ?: return@setOnClickListener
-                view.findViewById<EditText>(R.id.etTituloNotif).setText(p.titulo)
-                view.findViewById<EditText>(R.id.etMensajeNotif).setText(p.mensaje)
-                // Actualizar emoji selector visualmente y en estado
+                val p = plantillasMap[clave] ?: return@setOnClickListener
+                view.findViewById<EditText>(R.id.etTituloNotif).setText(getString(p.tituloRes))
+                view.findViewById<EditText>(R.id.etMensajeNotif).setText(getString(p.mensajeRes))
                 emojiSeleccionado = p.emoji
-                view.findViewById<EmojiSelectorView>(R.id.emojiSelector)
-                    .setSelectedEmoji(p.emoji)
+                view.findViewById<EmojiSelectorView>(R.id.emojiSelector).setSelectedEmoji(p.emoji)
                 actualizarPreview(view)
             }
         }
     }
 
-    // ── NUEVO: conectar EmojiSelectorView ──
     private fun configurarEmojiSelector(view: View) {
         view.findViewById<EmojiSelectorView>(R.id.emojiSelector)
             .setOnEmojiSelectedListener { emoji ->
@@ -112,7 +102,6 @@ class NotificacionesFragment : Fragment() {
             }
     }
 
-    // ── Campos título y mensaje ──
     private fun configurarCampos(view: View) {
         val etTitulo  = view.findViewById<EditText>(R.id.etTituloNotif)
         val etMensaje = view.findViewById<EditText>(R.id.etMensajeNotif)
@@ -139,7 +128,6 @@ class NotificacionesFragment : Fragment() {
         })
     }
 
-    // ── Audiencias ──
     private fun configurarAudiencias(view: View) {
         val grupos = mapOf(
             R.id.audTodos     to "todos",
@@ -164,8 +152,7 @@ class NotificacionesFragment : Fragment() {
                 grupos.keys.forEach { id ->
                     view.findViewById<View>(id).setBackgroundResource(R.drawable.bg_card_dark)
                 }
-                view.findViewById<View>(viewId)
-                    .setBackgroundResource(R.drawable.bg_card_dark_selected)
+                view.findViewById<View>(viewId).setBackgroundResource(R.drawable.bg_card_dark_selected)
 
                 radios.values.forEach { rid ->
                     view.findViewById<ImageView>(rid).setImageResource(R.drawable.ic_radio_off)
@@ -179,46 +166,33 @@ class NotificacionesFragment : Fragment() {
         }
     }
 
-    // ── Switch programar ──
     private fun configurarSwitch(view: View) {
-        view.findViewById<SwitchCompat>(R.id.switchProgramar)
-            .setOnCheckedChangeListener { _, _ ->
-                // TODO: mostrar selector de fecha/hora
-            }
+        view.findViewById<SwitchCompat>(R.id.switchProgramar).setOnCheckedChangeListener { _, _ -> }
     }
 
-    // ── Botón enviar ──
     private fun configurarBotonEnviar(view: View) {
         view.findViewById<Button>(R.id.btnEnviarNotif).setOnClickListener {
             val titulo  = view.findViewById<EditText>(R.id.etTituloNotif).text.toString().trim()
             val mensaje = view.findViewById<EditText>(R.id.etMensajeNotif).text.toString().trim()
 
             if (titulo.isEmpty() || mensaje.isEmpty()) {
-                Snackbar.make(view, "Completa el título y el mensaje", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view, getString(R.string.error_campos_notif), Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            // TODO: llamar a tu servicio de envío (Firebase FCM, etc.)
-            Snackbar.make(
-                view,
-                "✅ Notificación enviada a $contadorAudiencia usuarios",
-                Snackbar.LENGTH_LONG
-            ).show()
+            Snackbar.make(view, getString(R.string.notif_enviada_format, contadorAudiencia), Snackbar.LENGTH_LONG).show()
         }
     }
 
-    // ── Helpers ──
     private fun actualizarPreview(view: View) {
         val titulo  = view.findViewById<EditText>(R.id.etTituloNotif).text.toString()
         val mensaje = view.findViewById<EditText>(R.id.etMensajeNotif).text.toString()
-        view.findViewById<TextView>(R.id.tvPreviewTitle).text =
-            titulo.ifEmpty { "Título de la notificación" }
-        view.findViewById<TextView>(R.id.tvPreviewBody).text =
-            mensaje.ifEmpty { "Cuerpo del mensaje..." }
+        view.findViewById<TextView>(R.id.tvPreviewTitle).text = titulo.ifEmpty { getString(R.string.t_tulo_de_la_notificaci_n) }
+        view.findViewById<TextView>(R.id.tvPreviewBody).text = mensaje.ifEmpty { getString(R.string.cuerpo_del_mensaje) }
         view.findViewById<TextView>(R.id.tvPreviewIcon).text = emojiSeleccionado
     }
 
     private fun actualizarBoton(view: View) {
-        view.findViewById<Button>(R.id.btnEnviarNotif).text =
-            "🔔 Enviar ahora · ${String.format("%,d", contadorAudiencia).replace(',', '.')} usuarios"
+        val formatCount = String.format("%,d", contadorAudiencia).replace(',', '.')
+        view.findViewById<Button>(R.id.btnEnviarNotif).text = getString(R.string.enviar_ahora_format, formatCount)
     }
 }

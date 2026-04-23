@@ -24,6 +24,29 @@
     <color name="historial_dia_vacio">#22263A</color>
     <color name="bgiconoHabito">#20FFFFFF</color>
     <color name="grisOscuro">#444444</color>
-
-
+    <color name="backgroundAdmin">#0A0A1F</color>
+    <color name="envivoTextAdmin">#22C55E</color>
+    <color name="texto1Admin">#8888AA</color>
+    <color name="medioAdmin">#FB923C</color>
+    <color name="bajoAdmin">#F87171</color>
+    <color name="colorMeta">#818CF8</color>
+    <color name="actual">#8888AA</color>
+    <color name="progressBarVacia">#1E1E3A</color>
+    <color name="progressEstaSemana">#60A5FA</color>
+    <color name="progressEsteMes">#A78BFA</color>
+    <color name="todosUsuarios">#7C3AED</color>
+    <color name="_2dd4bf">#2DD4BF</color>
+    <color name="f87171">#F87171</color>
+    <color name="fb923c">#FB923C</color>
+    <color name="_2a2a4a">#2a2a4a</color>
+    <color name="cc88aa">#CC88AA</color>
+    <color name="a78bfa">#A78BFA</color>
+    <color name="_2dd4bf_">#2DD4BF</color>
+    <color name="bg_export_pdf">#1A1A3A</color>
+    <color name="bg_export_csv">#0A2A2A</color>
+    <color name="progresoSortColor">#8888EE</color>
+    <color name="tabBarAdminBackground">#0D0D28</color>
+    <color name="tabUnselected">#6666AA</color>
+    <color name="amarilloAdmin">#FACC15</color>
+    <color name="tendenciaVacia">#2A2A50</color>
 </resources>

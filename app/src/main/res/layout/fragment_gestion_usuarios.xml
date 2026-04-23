@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A1F">
+    android:background="@color/backgroundAdmin">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@drawable/bg_round_purple"
-                    android:src="@drawable/ic_bolt"
+                    android:src="@drawable/destello"
                     android:padding="6dp"
                     android:layout_marginEnd="8dp" />
 
@@ -37,16 +37,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="HabitAdmin"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/habitadmin"
+                    android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icono10"
+                    android:padding="6dp"
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="👤 Usuarios"
-                    android:textColor="#A78BFA"
+                    android:text="@string/usuarios"
+                    android:textColor="@color/a78bfa"
                     android:textSize="11sp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="4dp"
@@ -55,10 +62,10 @@
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:src="@drawable/ic_notifications"
+                    android:src="@drawable/tuerca"
                     android:background="@drawable/bg_round_dark"
                     android:padding="5dp"
-                    android:tint="#AAAACC" />
+                     />
 
             </LinearLayout>
 
@@ -66,16 +73,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ADMINISTRACIÓN"
-                android:textColor="#8888AA"
-                android:textSize="10sp"
+                android:text="@string/administracion"
+                android:textColor="@color/texto1Admin"
+                android:textSize="11sp"
                 android:letterSpacing="0.1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gestión de Usuarios"
-                android:textColor="#FFFFFF"
+                android:text="@string/gestion_usuarios"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_marginTop="2dp" />
@@ -84,8 +91,8 @@
                 android:id="@+id/tvTotalUsuarios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8 usuarios registrados en la plataforma"
-                android:textColor="#8888AA"
+                android:text="@string/usuarios_registrados_plataforma"
+                android:textColor="@color/texto1Admin"
                 android:textSize="11sp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="14dp" />
@@ -106,8 +113,8 @@
                         android:id="@+id/btnFiltroActivos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6 Activos"
-                        android:textColor="#8888AA"
+                        android:text="@string/activos_6"
+                        android:textColor="@color/texto1Admin"
                         android:textSize="11sp"
                         android:paddingHorizontal="14dp"
                         android:paddingVertical="6dp" />
@@ -116,8 +123,8 @@
                         android:id="@+id/btnFiltroInactivos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2 Inactivos"
-                        android:textColor="#8888AA"
+                        android:text="@string/inactivos_2"
+                        android:textColor="@color/texto1Admin"
                         android:textSize="11sp"
                         android:paddingHorizontal="14dp"
                         android:paddingVertical="6dp" />
@@ -126,8 +133,8 @@
                         android:id="@+id/btnFiltroPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3 Pro"
-                        android:textColor="#8888AA"
+                        android:text="@string/pro_3"
+                        android:textColor="@color/texto1Admin"
                         android:textSize="11sp"
                         android:paddingHorizontal="14dp"
                         android:paddingVertical="6dp" />
@@ -136,8 +143,8 @@
                         android:id="@+id/btnFiltroTodos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Todos"
-                        android:textColor="#FFFFFF"
+                        android:text="@string/todos"
+                        android:textColor="@color/white"
                         android:textSize="11sp"
                         android:paddingHorizontal="14dp"
                         android:paddingVertical="6dp" />
@@ -150,8 +157,8 @@
                 android:id="@+id/etBuscarUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:hint="🔍  Buscar por nombre o email..."
-                android:textColor="#FFFFFF"
+                android:hint="@string/buscar_hint"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:paddingHorizontal="14dp"
                 android:inputType="text"
@@ -169,37 +176,51 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ordenar:"
-                    android:textColor="#8888AA"
+                    android:text="@string/ordenar"
+                    android:textColor="@color/texto1Admin"
                     android:textSize="11sp" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/btnSortRacha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🔥 Racha"
-                    android:textColor="#FB923C"
-                    android:textSize="10sp"
-                    android:paddingHorizontal="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/img2estadisticas"
+                    android:paddingHorizontal="5dp"
                     android:paddingVertical="4dp" />
 
                 <TextView
-                    android:id="@+id/btnSortProgreso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="📊 Progreso"
-                    android:textColor="#8888EE"
-                    android:textSize="10sp"
-                    android:paddingHorizontal="10dp"
+                    android:text="@string/racha"
+                    android:textColor="@color/medioAdmin"
+                    android:textSize="11sp"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="4dp"/>
+
+                <ImageView
+                    android:id="@+id/btnSortProgreso"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/completacion"
+                    android:paddingHorizontal="5dp"
                     android:paddingVertical="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/progreso"
+                    android:textColor="@color/progresoSortColor"
+                    android:textSize="11sp"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="4dp"/>
 
                 <TextView
                     android:id="@+id/btnSortNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="≡ Nombre"
-                    android:textColor="#8888AA"
-                    android:textSize="10sp"
+                    android:text="@string/nombre_sort"
+                    android:textColor="@color/texto1Admin"
+                    android:textSize="11sp"
 
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp" />
@@ -211,9 +232,9 @@
                 android:id="@+id/tvResultados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8 resultados"
-                android:textColor="#8888AA"
-                android:textSize="10sp"
+                android:text="@string/resultados_8"
+                android:textColor="@color/texto1Admin"
+                android:textSize="11sp"
                 android:layout_marginBottom="10dp" />
 
             <!-- LISTA DE USUARIOS -->
@@ -234,11 +255,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:text="+ Nuevo usuario"
-        android:textColor="#FFFFFF"
+        android:text="@string/nuevo_usuario"
+        android:textColor="@color/white"
         android:textSize="13sp"
-        app:backgroundTint="#7C3AED"
-        app:iconTint="#FFFFFF"
+        app:backgroundTint="@color/todosUsuarios"
+        app:iconTint="@color/white"
         app:elevation="6dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,11 +1,13 @@
 package com.example.consty_group.main.perfil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.consty_group.R
+import com.example.consty_group.admin.AdminActivity
 import com.example.consty_group.databinding.FragmentPerfilBinding
 
 class PerfilFragment : Fragment() {
@@ -44,9 +46,10 @@ class PerfilFragment : Fragment() {
                 .commit()
         }
 
-        // Ayuda y soporte
-        binding.ayudaExpand.setOnClickListener {
-            // próximamente
+        // Panel de Administrador (Ahora abre una nueva actividad)
+        binding.adminExpand.setOnClickListener {
+            val intent = Intent(requireContext(), AdminActivity::class.java)
+            startActivity(intent)
         }
     }
 

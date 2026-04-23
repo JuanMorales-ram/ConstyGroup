@@ -1,22 +1,21 @@
 package com.example.consty_group.main
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.consty_group.R
+import com.example.consty_group.admin.AdminActivity
 import com.example.consty_group.main.abito.HistorialDeAvitosFragment
 import com.example.consty_group.main.abito.HomeFragment
 import com.example.consty_group.main.abito.NuevoAbitoFragment
 import com.example.consty_group.main.abito.RachaDeHabitosFragment
 import com.example.consty_group.main.perfil.PerfilFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.text.replace
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -30,40 +29,32 @@ class MainActivity : AppCompatActivity() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
 
 
-        val MainLogo = findViewById<ImageView>(R.id.ivLogo)
-        MainLogo.setOnClickListener {
-            CargarFragment(HomeFragment())
+        val mainLogo = findViewById<ImageView>(R.id.ivLogo)
+        mainLogo.setOnClickListener {
+            cargarFragment(HomeFragment())
         }
 
-        val FotoPerfil = findViewById<ImageView>(R.id.ivFotoPerfilTop)
-        FotoPerfil.setOnClickListener {
-            CargarFragment(PerfilFragment())
+        val fotoPerfil = findViewById<ImageView>(R.id.ivFotoPerfilTop)
+        fotoPerfil.setOnClickListener {
+            cargarFragment(PerfilFragment())
         }
 
-
-
-
-        CargarFragment(HomeFragment())
+        cargarFragment(HomeFragment())
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.AdminAitos -> CargarFragment(HistorialDeAvitosFragment())
-                R.id.NuevAbito -> CargarFragment(NuevoAbitoFragment())
-                R.id.RachaDeAVitos -> CargarFragment(RachaDeHabitosFragment())
+                R.id.AdminAitos -> cargarFragment(HistorialDeAvitosFragment())
+                R.id.NuevAbito -> cargarFragment(NuevoAbitoFragment())
+                R.id.RachaDeAVitos -> cargarFragment(RachaDeHabitosFragment())
 
             }
             true
         }
-
-
     }
 
-    private fun CargarFragment(fragment: Fragment) {
+    private fun cargarFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContenedor, fragment)
             .commit()
     }
-
 }
-
-
