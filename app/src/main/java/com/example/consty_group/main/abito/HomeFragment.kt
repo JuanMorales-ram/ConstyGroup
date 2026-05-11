@@ -1,10 +1,16 @@
 package com.example.consty_group.main.abito
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +19,10 @@ import com.example.consty_group.R
 import com.example.consty_group.data.Habito
 import com.example.consty_group.data.HabitoRepository
 import kotlinx.coroutines.launch
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -23,6 +33,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var txtPorcentaje: TextView
     private lateinit var txtHabitosCompletados: TextView
     private lateinit var adapter: AbitoAdapter
+
+
+    // ── Cámara ────────────────────────────────────────────────────────────────
+    private var habitoActual: Habito? = null   // hábito al que se le quiere agregar foto
+    private var fotoUri: Uri? = null           // URI del archivo temporal de la foto
+
+    /** Lanza la cámara y espera el resultado */
+    private val camaraLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val uri = fotoUri ?: return@registerForActivityResult
+            val habito = habitoActual ?: return@registerForActivityResult
+            subirFotoASupabase(uri, habito)
+        }
+    }
+
+    /** Pide permiso de cámara y, si se otorga, abre la cámara */
+    private val permisoCamaraLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { concedido ->
+        if (concedido) abrirCamara()
+        else Toast.makeText(requireContext(), "Permiso de cámara necesario", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +75,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 lifecycleScope.launch {
                     try {
                         habito.id?.let { id ->
-                            HabitoRepository.toggleHabitoHoy(id, estaMarcado)
+                            HabitoRepository.toggleHabitoHoy(id, estaMarcado, habito.fotoUrl)
                             updateProgress()
                         }
                     } catch (e: Exception) {
@@ -53,6 +87,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             { habitoABorrar ->
                 // PARÁMETRO 2: Lógica de borrado (NUEVA)
                 mostrarDialogoEliminar(habitoABorrar)
+            },
+            onTomarFoto = { habito ->
+                habitoActual = habito
+                solicitarCamaraOAbrir()
             }
         )
 
@@ -62,6 +100,74 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // 3. Cargar datos reales desde Supabase
         cargarHabitos()
     }
+
+
+    // ── Cámara ────────────────────────────────────────────────────────────────
+
+    private fun solicitarCamaraOAbrir() {
+        val permiso = android.Manifest.permission.CAMERA
+        val granted = androidx.core.content.ContextCompat.checkSelfPermission(
+            requireContext(), permiso
+        ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+        if (granted) abrirCamara() else permisoCamaraLauncher.launch(permiso)
+    }
+
+    private fun abrirCamara() {
+        // Crear un archivo temporal donde la cámara guardará la foto
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val archivoFoto = File(requireContext().cacheDir, "fotos_habitos_$timestamp.jpg")
+        fotoUri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.fileprovider",
+            archivoFoto
+        )
+
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
+            putExtra(MediaStore.EXTRA_OUTPUT, fotoUri)
+        }
+        camaraLauncher.launch(intent)
+    }
+
+    private fun subirFotoASupabase(uri: Uri, habito: Habito) {
+        lifecycleScope.launch {
+            try {
+                // Leer los bytes de la foto desde la URI
+                val bytes = requireContext().contentResolver
+                    .openInputStream(uri)?.readBytes()
+                    ?: run {
+                        Toast.makeText(requireContext(), "No se pudo leer la foto", Toast.LENGTH_SHORT).show()
+                        return@launch
+                    }
+
+                val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                val fileName  = "foto_${habito.id}_$timestamp.jpg"
+
+                // Subir a Supabase Storage → bucket "fotos_habitos"
+                val urlPublica = HabitoRepository.subirFotoHabito(bytes, fileName, habito.id ?: "sin_id")
+
+                habito.fotoUrl = urlPublica
+                adapter.notifyDataSetChanged()
+
+                //  guardar la URL en el registro de hoy
+                habito.id?.let { id ->
+                    android.util.Log.d("FOTO_DEBUG", "Llamando toggleHabitoHoy con URL: $urlPublica")
+
+                    HabitoRepository.toggleHabitoHoy(id, true, urlPublica)
+                    android.util.Log.d("FOTO_DEBUG", "toggleHabitoHoy completado")
+
+                }
+
+                Toast.makeText(requireContext(), "✅ Foto guardada", Toast.LENGTH_SHORT).show()
+                android.util.Log.d("FOTO_HABITO", "URL: $urlPublica")
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error al subir foto: ${e.message}", Toast.LENGTH_LONG).show()
+                android.util.Log.e("FOTO_HABITO", "Error", e)
+            }
+        }
+    }
+
 
     private fun cargarHabitos() {
         lifecycleScope.launch {
@@ -76,6 +182,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 listaNube.forEach { habito ->
                     // Si el ID del hábito está en la lista de completados, marcarlo
                     habito.completadoHoy = completadosHoy.contains(habito.id)
+                    habito.fotoUrl = completadosHoy[habito.id] // ← recuperar la foto
                 }
 
                 // 4. Actualizar la lista local y el adaptador

@@ -76,6 +76,16 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
+        <!-- FOTO EVIDENCIA -->
+        <ImageView
+            android:id="@+id/imgEvidencia"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:cornerRadius="12dp" />
+
         <!-- OPCIONES FOTO Y UBICACIÓN -->
         <LinearLayout
             android:layout_width="match_parent"

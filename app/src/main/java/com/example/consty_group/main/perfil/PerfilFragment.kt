@@ -107,8 +107,7 @@ class PerfilFragment : Fragment() {
 
             } catch (error: Exception) { // Cambiamos 'e' por 'error' para evitar conflictos con Log.e
                 if (_binding != null) {
-                    Toast.makeText(requireContext(), "Error al cargar datos", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_LONG).show()
                 }
                 error.printStackTrace()
             }

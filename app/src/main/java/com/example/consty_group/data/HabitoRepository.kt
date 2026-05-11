@@ -4,7 +4,9 @@ package com.example.consty_group.data
 import com.example.consty_group.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.storage.storage
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 
@@ -20,7 +22,8 @@ data class Habito(    val id: String? = null,
                       val hora_recordatorio: String = "",
                       val dias_semana: String = "",
                       var completadoHoy: Boolean = false,
-                      var esComplejo: Boolean = false
+                      var esComplejo: Boolean = false,
+                      var fotoUrl: String? = null
 
 )
 
@@ -54,29 +57,60 @@ object HabitoRepository {
 
     //--logica del registro diario--------------------------------------------
 
-    suspend fun toggleHabitoHoy(habitoId: String, completado: Boolean) {
+    suspend fun toggleHabitoHoy(habitoId: String, completado: Boolean, fotoUrl: String? = null) {
         val userId = SupabaseClient.client.auth.currentUserOrNull()?.id ?: return
         val tabla = SupabaseClient.client.postgrest["registros_habitos"]
-
-        // Forma compatible con API 24 para obtener la fecha actual (yyyy-MM-dd)
         val sdf = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
         val fechaHoy = sdf.format(java.util.Date())
 
         if (completado) {
-            // Insertar registro
-            val nuevoDoc = buildJsonObject {
-                put("habito_id", habitoId)
-                put("usuario_id", userId)
-                put("fecha", fechaHoy)
+            // Primero intentamos actualizar si ya existe
+            val existentes = tabla.select {
+                filter {
+                    eq("habito_id", habitoId)
+                    eq("usuario_id", userId)
+                    eq("fecha", fechaHoy)
+                }
+            }.decodeList<Map<String, String?>>()
+
+            if (existentes.isNotEmpty()) {
+                // Ya existe → solo actualizamos foto_url si hay foto
+                android.util.Log.d("FOTO_DEBUG", "Registro existe, actualizando foto_url: $fotoUrl")
+                if (fotoUrl != null) {
+                    tabla.update({
+                        set("foto_url", fotoUrl)
+                    }) {
+                        filter {
+                            eq("habito_id", habitoId)
+                            eq("usuario_id", userId)
+                            eq("fecha", fechaHoy)
+                        }
+                    }
+                    android.util.Log.d("FOTO_DEBUG", "Update ejecutado")
+
+                }
+            } else {
+                android.util.Log.d("FOTO_DEBUG", "Registro nuevo, insertando con foto_url: $fotoUrl")
+
+                // No existe → insertar nuevo
+                val urlFoto = fotoUrl
+                val nuevoDoc = buildJsonObject {
+                    put("habito_id", JsonPrimitive(habitoId))
+                    put("usuario_id", JsonPrimitive(userId))
+                    put("fecha", JsonPrimitive(fechaHoy))
+                    if (urlFoto != null) put("foto_url", JsonPrimitive(urlFoto))
+                }
+                tabla.insert(nuevoDoc)
+                android.util.Log.d("FOTO_DEBUG", "Insert ejecutado")
+
             }
-            tabla.insert(nuevoDoc)
         } else {
-            // Eliminar registro si el usuario se arrepiente
+            // Desmarcar → borrar registro
             tabla.delete {
                 filter {
                     eq("habito_id", habitoId)
                     eq("usuario_id", userId)
-                    eq("fecha", fechaHoy )
+                    eq("fecha", fechaHoy)
                 }
             }
         }
@@ -84,9 +118,8 @@ object HabitoRepository {
 
     //LOGICA CARGA INICIAL DE DATOS: para que la lista no aparezca vacia al abrir la app
     //para saber si ya lo marcamos hoy
-    suspend fun obtenerRegistrosHoy(): List<String> {
-        val userId = SupabaseClient.client.auth.currentUserOrNull()?.id ?: return emptyList()
-
+    suspend fun obtenerRegistrosHoy(): Map<String, String?> {
+        val userId = SupabaseClient.client.auth.currentUserOrNull()?.id ?: return emptyMap()
         val sdf = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
         val fechaHoy = sdf.format(java.util.Date())
 
@@ -98,12 +131,11 @@ object HabitoRepository {
                         eq("fecha", fechaHoy)
                     }
                 }
-                .decodeList<Map<String, String>>()
+                .decodeList<Map<String, String?>>()  // ← String? no String
 
-            // Extraemos solo los IDs de los hábitos
-            resultado.map { it["habito_id"] ?: "" }
+            resultado.associate { (it["habito_id"] ?: "") to it["foto_url"] }
         } catch (e: Exception) {
-            emptyList()
+            emptyMap()
         }
     }
 
@@ -116,19 +148,37 @@ object HabitoRepository {
         }
     }
 
+    //foto del habito
+    suspend fun subirFotoHabito(bytes: ByteArray, fileName: String, habitoId: String): String {
+        val storage = SupabaseClient.client.storage["fotos_habitos"]
+        val path    = "$habitoId/$fileName"
+        storage.upload(path, bytes) { upsert = true }
+        return storage.publicUrl(path)
+    }
+
     //logica para el  HISTORIAL DE RACHAS
 
     /** Obtiene los IDs de los días que un hábito fue completado (historial completo) */
     suspend fun obtenerHistorialDeHabito(habitoId: String): List<String> {
+        val userId = SupabaseClient.client.auth.currentUserOrNull()?.id ?: return emptyList()
         return try {
             val resultado = SupabaseClient.client.postgrest["registros_habitos"]
                 .select {
-                    filter { eq("habito_id", habitoId) }
+                    filter {
+                        eq("habito_id", habitoId)
+                        eq("usuario_id", userId)
+                    }
                 }
-                .decodeList<Map<String, String>>()
+                // Cambiamos String por Any? para que no falle con nulos o IDs
+                .decodeList<Map<String, kotlinx.serialization.json.JsonElement>>()
 
-            resultado.map { it["fecha"] ?: "" }
+            resultado.map { row ->
+                // Extraemos la fecha limpiando las comillas si vienen del JsonElement
+                row["fecha"]?.toString()?.replace("\"", "") ?: ""
+            }.filter { it.isNotEmpty() }
+
         } catch (e: Exception) {
+            android.util.Log.e("REPOSITORIO", "Error obteniendo historial: ${e.message}")
             emptyList()
         }
     }
@@ -138,24 +188,31 @@ object HabitoRepository {
         if (fechas.isEmpty()) return 0
 
         val sdf = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
-        val hoy = java.util.Calendar.getInstance()
-
-        // Convertir strings a milisegundos y ordenar de más reciente a más antiguo
-        val fechasMillis = fechas.map { sdf.parse(it).time }.sortedDescending()
-
-        var racha = 0
+        val hoyMillis = sdf.parse(sdf.format(java.util.Date())).time
         val unDiaMillis = 24 * 60 * 60 * 1000L
 
-        // Empezamos comparando con "hoy"
-        var fechaComparar = sdf.parse(sdf.format(hoy.time)).time
+        // Ordenar fechas de más reciente a más antigua
+        val fechasMillis = fechas.mapNotNull {
+            try { sdf.parse(it).time } catch(e: Exception) { null }
+        }.distinct().sortedDescending()
+
+        if (fechasMillis.isEmpty()) return 0
+
+        var racha = 0
+        var fechaEsperada = fechasMillis.first()
+
+        // Verificamos si la fecha más reciente es hoy o ayer
+        // Si la última vez que lo hizo fue antes de ayer, la racha es 0
+        if (fechaEsperada < hoyMillis - unDiaMillis) {
+            return 0
+        }
 
         for (fecha in fechasMillis) {
-            if (fecha == fechaComparar) {
+            if (fecha == fechaEsperada) {
                 racha++
-                fechaComparar -= unDiaMillis // Restamos un día para la siguiente vuelta
-            } else if (fecha < fechaComparar) {
-                // Si hay un hueco en las fechas, la racha se rompe
-                break
+                fechaEsperada -= unDiaMillis
+            } else {
+                break // Hueco detectado
             }
         }
         return racha
@@ -175,7 +232,7 @@ object HabitoRepository {
             .select {
                 filter { eq("usuario_id", userId) }
             }
-            .decodeList<Map<String, String>>()
+            .decodeList<Map<String, String?>>()
 
         // 3. Agrupamos por fecha y mapeamos a objetos Habito
         return registros

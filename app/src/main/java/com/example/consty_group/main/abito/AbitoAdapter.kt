@@ -9,7 +9,9 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.graphics.Color
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.consty_group.R
 import com.example.consty_group.data.Habito
 
@@ -17,7 +19,8 @@ class AbitoAdapter(
     // Cambiamos AbitoItem por tu modelo de Supabase
     private var data: MutableList<Habito>,
     private val onHabitChanged: (Habito, Boolean) -> Unit, // Pasamos el hábito y si se marcó
-    private val onHabitDeleted: (Habito) -> Unit // Pasamos el hábito a eliminar
+    private val onHabitDeleted: (Habito) -> Unit, // Pasamos el hábito a eliminar
+    private val onTomarFoto: (Habito) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     // Función para actualizar la lista cuando descargues los datos de Supabase
@@ -96,17 +99,37 @@ class AbitoAdapter(
             holder.btnUbicacionIcon.imageTintList = colorStateList
             holder.btnCompletar.backgroundTintList = colorStateList
 
+            // ── Botón foto ────────────────────────────────────────────────────
+            holder.containerFoto.setOnClickListener {
+                onTomarFoto(item)              // avisa al Fragment qué hábito está activo
+            }
+
             holder.btnCompletar.setOnClickListener {
                 item.completadoHoy = true
                 item.esComplejo = false
                 onHabitChanged(item, true)
                 notifyItemChanged(position)
+                Toast.makeText(holder.itemView.context, "✅ Hábito completado", Toast.LENGTH_SHORT).show()
+
             }
 
             holder.btnCompletarSin.setOnClickListener {
                 item.esComplejo = false
                 notifyItemChanged(position)
             }
+
+            // Mostrar foto evidencia si ya existe
+            if (item.fotoUrl != null) {
+                holder.imgEvidencia.visibility = View.VISIBLE
+                Glide.with(holder.itemView.context)
+                    .load(item.fotoUrl)
+                    .centerCrop()
+                    .into(holder.imgEvidencia)
+            } else {
+                holder.imgEvidencia.visibility = View.GONE
+            }
+
+
         }
 
         holder.itemView.setOnLongClickListener {
@@ -128,9 +151,13 @@ class AbitoAdapter(
         val nombre: TextView = view.findViewById(R.id.txtNombre)
         val dias: TextView = view.findViewById(R.id.txtDias)
         val icono: ImageView = view.findViewById(R.id.iconoHabito)
+
+        val containerFoto: View  = view.findViewById(R.id.containerFoto)
         val btnFotoIcon: ImageView = view.findViewById(R.id.btnFotoIcon)
         val btnUbicacionIcon: ImageView = view.findViewById(R.id.btnUbicacionIcon)
         val btnCompletar: Button = view.findViewById(R.id.btnCompletar)
         val btnCompletarSin: Button = view.findViewById(R.id.btnCompletarSin)
+
+        val imgEvidencia: ImageView = view.findViewById(R.id.imgEvidencia)
     }
 }
