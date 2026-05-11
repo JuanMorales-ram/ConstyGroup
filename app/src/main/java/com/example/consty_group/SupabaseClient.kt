@@ -1,6 +1,6 @@
 package com.example.consty_group
 
-import android.net.http.HttpResponseCache.install
+
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
@@ -9,10 +9,9 @@ import io.github.jan.supabase.storage.Storage
 object SupabaseClient {
 
     val client = createSupabaseClient(
-        // ⚠️ REEMPLAZA estos valores con los de tu proyecto en Supabase
-        // Los encuentras en: Supabase Dashboard → Settings → API
+        // remplazamos estos valores con los de nuestro proyecto en Supabase
         supabaseUrl = "https://csjuxprivdrxogcvmncz.supabase.co",
-        supabaseKey = "sb_publishable_83cq9RPp5JmgfLGaG4Zjug_okRiWNL9\n"
+        supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzanV4cHJpdmRyeG9nY3ZtbmN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzQyMzQsImV4cCI6MjA5MzY1MDIzNH0.BTulpOVfUx5AKNUImqXrwgMWARP4YBjH2rZxdVAsakU"
     ) {
         install(Auth)
         install(Postgrest)

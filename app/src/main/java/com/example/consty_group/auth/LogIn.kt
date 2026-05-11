@@ -1,19 +1,21 @@
 package com.example.consty_group.auth
 
 import android.content.Intent
-import android.credentials.CredentialManager
-import android.credentials.GetCredentialRequest
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.text.input.KeyboardType.Companion.Email
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.credentials.CredentialManager
+import androidx.credentials.GetCredentialRequest
 import androidx.lifecycle.lifecycleScope
+import com.example.consty_group.Activities.ConfirmarCorreo
+import com.example.consty_group.Activities.RecuperarContrasena
 import com.example.consty_group.R
 import com.example.consty_group.SupabaseClient
 import com.example.consty_group.data.UsuarioRepository
@@ -26,7 +28,6 @@ import io.github.jan.supabase.auth.providers.Google
 import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.providers.builtin.IDToken
 import kotlinx.coroutines.launch
-import java.nio.channels.spi.AsynchronousChannelProvider.provider
 
 class LogIn : AppCompatActivity() {
 
@@ -34,6 +35,8 @@ class LogIn : AppCompatActivity() {
     private lateinit var inputContrasena: EditText
     private lateinit var buttonLogIn: Button
     private lateinit var buttonGoogle: MaterialButton
+
+    private lateinit var textRecupContra: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,13 +57,21 @@ class LogIn : AppCompatActivity() {
         inputContrasena = findViewById(R.id.InputContrasenaLogIn)
         buttonLogIn = findViewById(R.id.ButtonLogIn)
         buttonGoogle = findViewById(R.id.ButtonGoogleLogIn)
+        textRecupContra = findViewById(R.id.TextRecupContra)
+
+
+        // ── Recuperar contraseña ─────────────────────────────────────────────
+        textRecupContra.setOnClickListener {
+            startActivity(Intent(this, RecuperarContrasena::class.java))
+        }
+
 
         // ── Login con email/contraseña ───────────────────────────────────────
         buttonLogIn.setOnClickListener {
-            val email = inputEmail.text.toString().trim()
-            val contrasena = inputContrasena.text.toString().trim()
+            val emailDigitado = inputEmail.text.toString().trim()
+            val contrasenaDigitada = inputContrasena.text.toString().trim()
 
-            if (email.isEmpty() || contrasena.isEmpty()) {
+            if (emailDigitado.isEmpty() || contrasenaDigitada.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -68,8 +79,8 @@ class LogIn : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     SupabaseClient.client.auth.signInWith(Email) {
-                        this.email = email
-                        this.password = contrasena
+                        email    = emailDigitado
+                        password = contrasenaDigitada
                     }
                     irAMainActivity()
                 } catch (e: Exception) {
@@ -93,8 +104,8 @@ class LogIn : AppCompatActivity() {
             try {
                 val googleIdOption = GetGoogleIdOption.Builder()
                     .setFilterByAuthorizedAccounts(false)
-                    // ⚠️ REEMPLAZA con tu Web Client ID de Google Cloud Console
-                    // Proyecto "Usuarios" → Credenciales → ID de cliente OAuth 2.0 (tipo Web)
+                    // remplazamos con nuestro Web Client ID de Google Cloud Console
+
                     .setServerClientId("779250716737-mifc2n52ssi4bsqkujte21m6ljicmabo.apps.googleusercontent.com")
                     .build()
 

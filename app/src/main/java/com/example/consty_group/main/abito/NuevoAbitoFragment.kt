@@ -1,5 +1,12 @@
 package com.example.consty_group.main.abito
 
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.consty_group.data.Habito
+import com.example.consty_group.data.HabitoRepository
+import kotlinx.coroutines.launch
+
+
 import android.app.TimePickerDialog
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -172,20 +179,102 @@ class NuevoAbitoFragment : Fragment() {
         return (dp * resources.displayMetrics.density).toInt()
     }
 
-    private fun configurarBotones() {
-        binding.btnVolver.setOnClickListener { parentFragmentManager.popBackStack() }
+    private fun configurarBotones() {binding.btnVolver.setOnClickListener { parentFragmentManager.popBackStack() }
+
         binding.btnCrearHabito.setOnClickListener {
             val nombre = binding.etNombreHabito.text.toString().trim()
+
+            // 1. Validación simple
             if (nombre.isEmpty()) {
                 binding.etNombreHabito.error = "Escribe un nombre para tu hábito"
                 return@setOnClickListener
             }
-            parentFragmentManager.popBackStack()
+
+            // 2. Recolectar el color en formato Hexadecimal para la base de datos
+            // Convertimos el Int de colorSeleccionado a String Hex (ej: #453AF9)
+            val colorHex = String.format("#%06X", 0xFFFFFF and colorSeleccionado)
+
+            // 3. Crear el objeto Habito con lo que el usuario seleccionó en la UI
+            val nuevoHabito = Habito(
+                nombre = nombre,
+                icono_res_id = iconoSeleccionado,
+                color_hex = colorHex,
+                recordatorio_activo = binding.switchRecordatorio.isChecked,
+                hora_recordatorio = horaSeleccionada,
+                dias_semana = diasSeleccionados.sorted().joinToString(",") // Guardamos "J,L"
+            )
+
+            // 4. Ejecutar la inserción en Supabase usando una Corrutina
+            lifecycleScope.launch {
+                try {
+                    // Bloqueamos el botón para evitar doble clic
+                    binding.btnCrearHabito.isEnabled = false
+
+                    HabitoRepository.crearHabito(nuevoHabito)
+
+
+                    // === AQUÍ SE ACTIVA LA NOTIFICACIÓN ===
+                    if (nuevoHabito.recordatorio_activo) {
+                        programarNotificacion(nuevoHabito.nombre, nuevoHabito.hora_recordatorio)
+                    }
+
+                    Toast.makeText(requireContext(), "¡Hábito \"$nombre\" creado!", Toast.LENGTH_SHORT).show()
+
+                    // Volver a la pantalla anterior
+                    parentFragmentManager.popBackStack()
+                } catch (e: Exception) {
+                    binding.btnCrearHabito.isEnabled = true
+                    Toast.makeText(requireContext(), "Error al guardar: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun programarNotificacion(nombreHabito: String, horaStr: String) {
+        try {
+            val intent = android.content.Intent(requireContext(), HabitoReceiver::class.java).apply {
+                putExtra("nombre_habito", nombreHabito)
+            }
+
+            val pendingIntent = android.app.PendingIntent.getBroadcast(
+                requireContext(),
+                nombreHabito.hashCode(), // ID único para que no se borren entre sí
+                intent,
+                android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE
+            )
+
+            val alarmManager = requireContext().getSystemService(android.content.Context.ALARM_SERVICE) as android.app.AlarmManager
+
+            // Convertir la hora (ej: 8:00 PM) a milisegundos
+            val sdf = java.text.SimpleDateFormat("h:mm a", java.util.Locale.US)
+            val date = sdf.parse(horaStr) ?: return
+            val calendar = Calendar.getInstance().apply {
+                val h = Calendar.getInstance()
+                h.time = date
+                set(Calendar.HOUR_OF_DAY, h.get(Calendar.HOUR_OF_DAY))
+                set(Calendar.MINUTE, h.get(Calendar.MINUTE))
+                set(Calendar.SECOND, 0)
+
+                // Si la hora ya pasó hoy, programarla para mañana
+                if (before(Calendar.getInstance())) {
+                    add(Calendar.DATE, 1)
+                }
+            }
+
+            // Programar alarma
+            alarmManager.setExactAndAllowWhileIdle(
+                android.app.AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                pendingIntent
+            )
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

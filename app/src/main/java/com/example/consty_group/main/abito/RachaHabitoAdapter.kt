@@ -10,21 +10,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.consty_group.R
-
-// Definimos qué colores puede tener el borde
-enum class ColorRacha { AZUL, AMARILLO, ROJO, CELESTE }
-
-// Molde del hábito
-data class RachaHabito(
-    val nombre: String,
-    val icono: Int,
-    val diasRacha: Int,
-    val colorBorde: ColorRacha,
-    val completadoHoy: Boolean = false
-)
+import com.example.consty_group.data.Habito
 
 class RachaHabitoAdapter(
-    private val lista: List<RachaHabito>
+    private val listaHabitos: List<Pair<Habito, Int>> // Recibe el Hábito + el número de racha
 ) : RecyclerView.Adapter<RachaHabitoAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -42,46 +31,47 @@ class RachaHabitoAdapter(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = lista.size
+    override fun getItemCount(): Int = listaHabitos.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val habito = lista[position]
+        val (habito, diasDeRacha) = listaHabitos[position]
         val context = holder.itemView.context
 
-        holder.tvDias.text = "${habito.diasRacha} Dias"
+        holder.tvDias.text = "$diasDeRacha Dias"
         holder.tvNombre.text = habito.nombre
-        holder.ivIcono.setImageResource(habito.icono)
+        holder.ivIcono.setImageResource(habito.icono_res_id)
 
-        // CORRECCIÓN: Obtener color usando ContextCompat
-        val colorInt = when (habito.colorBorde) {
-            ColorRacha.AZUL     -> ContextCompat.getColor(context, R.color.CardPerfil)
-            ColorRacha.AMARILLO -> ContextCompat.getColor(context, R.color.BorderPrimerLogro)
-            ColorRacha.ROJO     -> ContextCompat.getColor(context, R.color.ColorRojo)
-            ColorRacha.CELESTE  -> ContextCompat.getColor(context, R.color.BorderTercerLogro)
+        // Lógica de colores basada en la intensidad de la racha
+        val colorRes = when {
+            diasDeRacha >= 21 -> R.color.ColorRojo        // Racha legendaria
+            diasDeRacha >= 7  -> R.color.BorderTercerLogro // Racha semanal
+            diasDeRacha >= 3  -> R.color.BorderPrimerLogro // Racha inicial
+            else              -> R.color.CardPerfil        // Recién empezando
         }
 
-        // Borde
-        val borderRes = when (habito.colorBorde) {
-            ColorRacha.AZUL     -> R.drawable.borde_racha_azul
-            ColorRacha.AMARILLO -> R.drawable.borde_racha_amarillo
-            ColorRacha.ROJO     -> R.drawable.border_racha_rojo
-            ColorRacha.CELESTE  -> R.drawable.borde_racha_celeste
+        val colorInt = ContextCompat.getColor(context, colorRes)
+
+        // Borde dinámico según la racha
+        val borderRes = when {
+            diasDeRacha >= 21 -> R.drawable.border_racha_rojo
+            diasDeRacha >= 7  -> R.drawable.borde_racha_celeste
+            diasDeRacha >= 3  -> R.drawable.borde_racha_amarillo
+            else              -> R.drawable.borde_racha_azul
         }
         holder.container.setBackgroundResource(borderRes)
 
-        // Tinte de icono
+        // Aplicar el color del icono
         holder.ivIcono.imageTintList = ColorStateList.valueOf(colorInt)
 
-        // Fondo semi-transparente
+        // Fondo semi-transparente del icono
         val colorFondoSemi = Color.argb(38, Color.red(colorInt), Color.green(colorInt), Color.blue(colorInt))
         holder.layoutIcono.backgroundTintList = ColorStateList.valueOf(colorFondoSemi)
 
-        // Check (Gris si no está completado)
+        // Check visual de si hoy ya se cumplió
         if (habito.completadoHoy) {
-            holder.ivCheck.imageTintList = null 
+            holder.ivCheck.imageTintList = null // Color original del recurso (verde/blanco)
         } else {
-            // Asegúrate de que "grisOscuro" exista en colors.xml, si no, usa un color existente
-            val colorGris = ContextCompat.getColor(context, R.color.backgroundColo) 
+            val colorGris = ContextCompat.getColor(context, R.color.backgroundColo)
             holder.ivCheck.imageTintList = ColorStateList.valueOf(colorGris)
         }
     }

@@ -8,13 +8,24 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.example.consty_group.R
+import com.example.consty_group.data.Habito
 
 class AbitoAdapter(
-    private val data: MutableList<AbitoItem>,
-    private val onHabitChanged: () -> Unit
+    // Cambiamos AbitoItem por tu modelo de Supabase
+    private var data: MutableList<Habito>,
+    private val onHabitChanged: (Habito, Boolean) -> Unit, // Pasamos el hábito y si se marcó
+    private val onHabitDeleted: (Habito) -> Unit // Pasamos el hábito a eliminar
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    // Función para actualizar la lista cuando descargues los datos de Supabase
+    fun updateData(newData: List<Habito>) {
+        data.clear()
+        data.addAll(newData)
+        notifyDataSetChanged()
+    }
 
     companion object {
         const val TIPO_SIMPLE = 0
@@ -22,10 +33,8 @@ class AbitoAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (data[position]) {
-            is AbitoSImple -> TIPO_SIMPLE
-            is AbitoComplejo -> TIPO_COMPLEJO
-        }
+        //  usamos la propiedad booleana que agregamos
+        return if (data[position].esComplejo) TIPO_COMPLEJO else TIPO_SIMPLE
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -44,76 +53,65 @@ class AbitoAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = data[position]
-        val colorStateList = ColorStateList.valueOf(item.color)
 
-        when (item) {
-            is AbitoSImple -> {
-                val h = holder as SimpleViewHolder
-                h.nombre.text = item.nombre
-                h.dias.text = "${item.dias} días"
-                h.icono.setImageResource(item.icono)
-                
-                // Aplicar color de la estructura
-                h.icono.imageTintList = colorStateList
-                h.iconCamara.imageTintList = colorStateList
-                h.iconMapa.imageTintList = colorStateList
-                h.check.backgroundTintList = colorStateList
+        // Convertimos el String Hex (#FFFFFF) a Int de Color
+        val colorInt = try {
+            Color.parseColor(item.color_hex) } catch (e: Exception) {
+            Color.WHITE }
+        val colorStateList = ColorStateList.valueOf(colorInt)
 
-                h.check.setOnCheckedChangeListener(null)
-                h.check.isChecked = item.completadoHoy
+        if (holder is SimpleViewHolder) {
+            holder.nombre.text = item.nombre
+            holder.dias.text = item.dias_semana
+            holder.icono.setImageResource(item.icono_res_id)
 
-                h.check.setOnCheckedChangeListener { _, isChecked ->
-                    item.completadoHoy = isChecked
-                    onHabitChanged()
-                }
+            holder.icono.imageTintList = colorStateList
+            holder.iconCamara.imageTintList = colorStateList
+            holder.iconMapa.imageTintList = colorStateList
+            holder.check.backgroundTintList = colorStateList
 
-                h.itemView.setOnClickListener {
-                    data[position] = AbitoComplejo(
-                        item.nombre,
-                        item.dias,
-                        item.color,
-                        item.icono,
-                        item.completadoHoy
-                    )
-                    notifyItemChanged(position)
-                }
+            var updating = true
+            holder.check.setOnCheckedChangeListener(null)
+            holder.check.isChecked = item.completadoHoy
+            updating = false
+
+            holder.check.setOnCheckedChangeListener { _, isChecked ->
+                if (updating) return@setOnCheckedChangeListener
+                item.completadoHoy = isChecked
+                onHabitChanged(item, isChecked)
             }
 
-            is AbitoComplejo -> {
-                val h = holder as ComplejoViewHolder
-                h.nombre.text = item.nombre
-                h.dias.text = "${item.dias} Dias"
-                h.icono.setImageResource(item.icono)
-
-                // Aplicar color de la estructura
-                h.icono.imageTintList = colorStateList
-                h.btnFotoIcon.imageTintList = colorStateList
-                h.btnUbicacionIcon.imageTintList = colorStateList
-                h.btnCompletar.backgroundTintList = colorStateList
-
-                h.btnCompletar.setOnClickListener {
-                    data[position] = AbitoSImple(
-                        item.nombre,
-                        item.dias + 1,
-                        item.color,
-                        item.icono,
-                        true
-                    )
-                    onHabitChanged()
-                    notifyItemChanged(position)
-                }
-
-                h.btnCompletarSin.setOnClickListener {
-                    data[position] = AbitoSImple(
-                        item.nombre,
-                        item.dias,
-                        item.color,
-                        item.icono,
-                        item.completadoHoy
-                    )
-                    notifyItemChanged(position)
-                }
+            holder.itemView.setOnClickListener {
+                item.esComplejo = true // Cambiamos estado
+                notifyItemChanged(position)
             }
+
+        } else if (holder is ComplejoViewHolder) {
+            holder.nombre.text = item.nombre
+            holder.dias.text = item.dias_semana
+            holder.icono.setImageResource(item.icono_res_id)
+
+            holder.icono.imageTintList = colorStateList
+            holder.btnFotoIcon.imageTintList = colorStateList
+            holder.btnUbicacionIcon.imageTintList = colorStateList
+            holder.btnCompletar.backgroundTintList = colorStateList
+
+            holder.btnCompletar.setOnClickListener {
+                item.completadoHoy = true
+                item.esComplejo = false
+                onHabitChanged(item, true)
+                notifyItemChanged(position)
+            }
+
+            holder.btnCompletarSin.setOnClickListener {
+                item.esComplejo = false
+                notifyItemChanged(position)
+            }
+        }
+
+        holder.itemView.setOnLongClickListener {
+            onHabitDeleted(item)
+            true
         }
     }
 

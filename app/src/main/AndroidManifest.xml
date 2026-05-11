@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--requerido para comunicarse con Supabase -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--permisos para usar notificaciones -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -40,6 +46,12 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- Receptor de notificaciones -->
+        <receiver
+            android:name=".main.abito.HabitoReceiver"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

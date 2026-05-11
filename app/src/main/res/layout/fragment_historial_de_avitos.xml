@@ -15,6 +15,16 @@
         android:paddingTop="16dp"
         android:paddingBottom="32dp">
 
+        <!-- Botón Volver -->
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/iconovolver"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/volver" />
+
         <!-- ========== RESUMEN: 3 cajones ========== -->
         <LinearLayout
             android:layout_width="match_parent"

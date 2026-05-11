@@ -1,20 +1,24 @@
 package com.example.consty_group.main.abito
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.consty_group.R
+import com.example.consty_group.data.HabitoRepository
 import com.example.consty_group.databinding.FragmentRachaDeHabitosBinding
+import kotlinx.coroutines.launch
 
 class RachaDeHabitosFragment : Fragment() {
 
     private var _binding: FragmentRachaDeHabitosBinding? = null
     private val binding get() = _binding!!
 
+    // Usamos el adaptador real
     private lateinit var adapter: RachaHabitoAdapter
 
     override fun onCreateView(
@@ -27,21 +31,45 @@ class RachaDeHabitosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        configurarRecyclerView()
+
+        // Configuramos la estructura del Recycler (2 columnas)
+        binding.rvRachaHabitos.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        // Llamamos a la carga de datos reales
+        cargarDatosReales()
+
         configurarBotones()
     }
 
-    // Dentro de RachaDeHabitosFragment.kt
-    private fun configurarRecyclerView() {
-        val habitos = listOf(
-            RachaHabito("Meditacion", R.drawable.icono7, 12, ColorRacha.AZUL, true),
-            RachaHabito("Correr", R.drawable.icono2, 10, ColorRacha.AMARILLO, true),
-            RachaHabito("Estudiar", R.drawable.icono5, 5, ColorRacha.CELESTE, true),
-            RachaHabito("Amor", R.drawable.icono8, 3, ColorRacha.ROJO, true)
-        )
+    private fun cargarDatosReales() {
+        lifecycleScope.launch {
+            try {
+                // 1. Obtener hábitos y registros de hoy de Supabase
+                val habitos = HabitoRepository.obtenerHabitos()
+                val completadosHoy = HabitoRepository.obtenerRegistrosHoy()
 
-        adapter = RachaHabitoAdapter(habitos)
-        binding.rvRachaHabitos.adapter = adapter
+                val listaFinal = mutableListOf<Pair<com.example.consty_group.data.Habito, Int>>()
+
+                // 2. Calcular la racha para cada hábito
+                for (habito in habitos) {
+                    // Marcamos si se hizo hoy para el icono visual del adaptador
+                    habito.completadoHoy = completadosHoy.contains(habito.id)
+
+                    // Obtenemos historial y calculamos racha
+                    val historial = HabitoRepository.obtenerHistorialDeHabito(habito.id!!)
+                    val numRacha = HabitoRepository.calcularRacha(historial)
+
+                    listaFinal.add(habito to numRacha)
+                }
+
+                // 3. Inicializamos el adaptador con la lista real
+                adapter = RachaHabitoAdapter(listaFinal)
+                binding.rvRachaHabitos.adapter = adapter
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error al cargar rachas: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun configurarBotones() {

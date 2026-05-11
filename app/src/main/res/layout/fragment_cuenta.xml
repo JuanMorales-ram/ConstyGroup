@@ -57,31 +57,18 @@
                 android:gravity="center"
                 android:padding="24dp">
 
-                <FrameLayout
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFotoPerfilCuenta"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginBottom="8dp">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/usuariopic"
-                        android:scaleType="centerCrop"
-                        app:shapeAppearanceOverlay="@style/CircleImage"
-                        app:strokeColor="@color/BorderImageUsuario"
-                        app:strokeWidth="3dp" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/btnCambiarFoto"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="bottom|end"
-                        android:src="@drawable/iconogaleria"
-                        app:shapeAppearanceOverlay="@style/CircleImage"
-                        android:padding="4dp"
-                        android:clickable="true"
-                        android:focusable="true" />
-                </FrameLayout>
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/usuariopic"
+                    android:scaleType="centerCrop"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/BorderImageUsuario"
+                    app:strokeWidth="3dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,6 +121,7 @@
                     android:src="@drawable/inputusuario" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombreCuenta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/juanit0x"
@@ -176,6 +164,7 @@
                     android:src="@drawable/inputcorreo" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCorreoCuenta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/ojicbag_gmail_com"
@@ -228,6 +217,7 @@
                     android:src="@drawable/iconopassword" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNuevaContrasena"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -269,6 +259,7 @@
                     android:src="@drawable/iconopassword" />
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmarContrasena"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
