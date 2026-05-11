@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         //cargar datos iniciales
         cargarFragment(HomeFragment())
         cargarHeaderUsuario()
-        verificarRol()
+
 
 
 
@@ -111,23 +111,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Consulta el rol del usuario en Supabase.
-     * Si es "admin" redirige al AdminActivity automáticamente.
-     * Si es "usuario" se queda en la pantalla normal.
-     */
-    private fun verificarRol() {
-        lifecycleScope.launch {
-            val rol = UsuarioRepository.obtenerRolActual()
-            runOnUiThread {
-                if (rol == "admin") {
-                    startActivity(Intent(this@MainActivity, AdminActivity::class.java))
-                    finish()
-                }
-                // Si es "usuario" no se hace nada, permanece aquí
-            }
-        }
-    }
 
     /** Llama esto desde PerfilFragment o desde donde tengas el botón de cerrar sesión */
     fun cerrarSesion() {

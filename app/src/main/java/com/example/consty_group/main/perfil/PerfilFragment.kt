@@ -75,6 +75,9 @@ class PerfilFragment : Fragment() {
                 val habitos = HabitoRepository.obtenerHabitos()
                 val historial = HabitoRepository.obtenerHistorialCompleto()
 
+                val rol = UsuarioRepository.obtenerRolActual()
+
+
                 // Verificamos que el binding aún exista antes de tocar la UI
                 _binding?.let { b ->
                     // 1. Datos personales
@@ -103,6 +106,9 @@ class PerfilFragment : Fragment() {
                         }
                     }
                     b.tvRachaActual.text = rachaMaxima.toString()
+
+                    b.btnAyuda.visibility = if (rol == "admin") View.VISIBLE else View.GONE
+
                 }
 
             } catch (error: Exception) { // Cambiamos 'e' por 'error' para evitar conflictos con Log.e

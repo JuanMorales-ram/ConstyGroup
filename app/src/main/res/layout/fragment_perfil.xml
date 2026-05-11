@@ -326,6 +326,7 @@
                     android:id="@+id/btnAyuda"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/ColorCardsPerfil"
                     app:cardCornerRadius="14dp"
                     app:strokeColor="@color/CardPerfil">
