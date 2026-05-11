@@ -3,16 +3,15 @@ package com.example.consty_group.data
 import com.example.consty_group.R
 import com.example.consty_group.SupabaseClient
 import io.github.jan.supabase.postgrest.postgrest
-import com.example.consty_group.data.Habito
+import io.github.jan.supabase.postgrest.query.Columns
+
 object AdminRepository {
-
-
 
     // ── Tarjeta: total de usuarios registrados ──────────────────────────────
     suspend fun contarTotalUsuarios(): Int {
         return try {
             SupabaseClient.client.postgrest["usuarios"]
-                .select()
+                .select(Columns.raw("id"))
                 .decodeList<Map<String, String>>()
                 .size
         } catch (e: Exception) { 0 }
@@ -23,7 +22,7 @@ object AdminRepository {
         val hoy = fechaHoy()
         return try {
             SupabaseClient.client.postgrest["registros_habitos"]
-                .select {
+                .select(Columns.raw("usuario_id")) {
                     filter { eq("fecha", hoy) }
                 }
                 .decodeList<Map<String, String>>()
@@ -38,7 +37,7 @@ object AdminRepository {
         val hace7 = fechaHaceNDias(7)
         return try {
             SupabaseClient.client.postgrest["registros_habitos"]
-                .select {
+                .select(Columns.raw("usuario_id")) {
                     filter { gte("fecha", hace7) }
                 }
                 .decodeList<Map<String, String>>()
@@ -53,7 +52,7 @@ object AdminRepository {
         val hace30 = fechaHaceNDias(30)
         return try {
             SupabaseClient.client.postgrest["registros_habitos"]
-                .select {
+                .select(Columns.raw("usuario_id")) {
                     filter { gte("fecha", hace30) }
                 }
                 .decodeList<Map<String, String>>()
@@ -67,11 +66,16 @@ object AdminRepository {
     suspend fun calcularTasaCompletacion(): Int {
         return try {
             val totalHabitos = SupabaseClient.client.postgrest["habitos"]
-                .select().decodeList<Map<String, String>>().size
+                .select(Columns.raw("id"))
+                .decodeList<Map<String, String>>()
+                .size
 
             val completadosHoy = SupabaseClient.client.postgrest["registros_habitos"]
-                .select { filter { eq("fecha", fechaHoy()) } }
-                .decodeList<Map<String, String>>().size
+                .select(Columns.raw("id")) {
+                    filter { eq("fecha", fechaHoy()) }
+                }
+                .decodeList<Map<String, String>>()
+                .size
 
             if (totalHabitos == 0) 0
             else ((completadosHoy.toFloat() / totalHabitos) * 100).toInt().coerceAtMost(100)
@@ -85,14 +89,20 @@ object AdminRepository {
         val labels = listOf("L", "M", "X", "J", "V", "S", "D")
         return try {
             val totalHabitos = SupabaseClient.client.postgrest["habitos"]
-                .select().decodeList<Map<String, String>>().size.takeIf { it > 0 }
+                .select(Columns.raw("id"))
+                .decodeList<Map<String, String>>()
+                .size
+                .takeIf { it > 0 }
                 ?: return listOf(DatoGrafico("—", 0))
 
             (6 downTo 0).mapIndexed { i, diasAtras ->
                 val fecha = fechaHaceNDias(diasAtras)
                 val completados = SupabaseClient.client.postgrest["registros_habitos"]
-                    .select { filter { eq("fecha", fecha) } }
-                    .decodeList<Map<String, String>>().size
+                    .select(Columns.raw("id")) {
+                        filter { eq("fecha", fecha) }
+                    }
+                    .decodeList<Map<String, String>>()
+                    .size
                 val pct = ((completados.toFloat() / totalHabitos) * 100).toInt().coerceAtMost(100)
                 DatoGrafico(labels[i], pct)
             }
@@ -103,15 +113,24 @@ object AdminRepository {
     suspend fun obtenerTendenciaMensual(): List<DatoGrafico> {
         return try {
             val totalHabitos = SupabaseClient.client.postgrest["habitos"]
-                .select().decodeList<Map<String, String>>().size.takeIf { it > 0 }
+                .select(Columns.raw("id"))
+                .decodeList<Map<String, String>>()
+                .size
+                .takeIf { it > 0 }
                 ?: return listOf(DatoGrafico("—", 0))
 
             (3 downTo 0).mapIndexed { i, semana ->
                 val desde = fechaHaceNDias((semana + 1) * 7)
                 val hasta = fechaHaceNDias(semana * 7)
                 val completados = SupabaseClient.client.postgrest["registros_habitos"]
-                    .select { filter { gte("fecha", desde); lte("fecha", hasta) } }
-                    .decodeList<Map<String, String>>().size
+                    .select(Columns.raw("id")) {
+                        filter {
+                            gte("fecha", desde)
+                            lte("fecha", hasta)
+                        }
+                    }
+                    .decodeList<Map<String, String>>()
+                    .size
                 val pct = ((completados.toFloat() / totalHabitos) * 100).toInt().coerceAtMost(100)
                 DatoGrafico("S${i + 1}", pct)
             }
@@ -119,23 +138,22 @@ object AdminRepository {
     }
 
     // ── Hábitos más populares (top 5 con más registros) ──────────────────────
-    // colorRes y rank se asignan aquí para no acoplar la UI al repositorio
     data class HabitoStats(
         val nombre: String,
         val emoji: String,
         val usuarios: Int,
         val porcentaje: Int,
-        val rank: String,          // "1" / "2" / "3" / "4" / "5"
-        val colorRes: Int          // R.color.*
+        val rank: String,
+        val colorRes: Int
     )
 
-    private val rankLabels  = listOf("1", "2", "3", "4", "5")
-    private val rankColors  = listOf(
-        R.color.colorMeta,          // 1er puesto
-        R.color.progressEstaSemana, // 2do
-        R.color.bajoAdmin,          // 3ro
-        R.color.texto1Admin,        // 4to
-        R.color.texto1Admin         // 5to
+    private val rankLabels = listOf("1", "2", "3", "4", "5")
+    private val rankColors = listOf(
+        R.color.colorMeta,
+        R.color.progressEstaSemana,
+        R.color.bajoAdmin,
+        R.color.texto1Admin,
+        R.color.texto1Admin
     )
 
     suspend fun obtenerHabitosPopulares(): List<HabitoStats> {
@@ -143,7 +161,10 @@ object AdminRepository {
             val totalUsuarios = contarTotalUsuarios().takeIf { it > 0 } ?: 1
 
             val registros = SupabaseClient.client.postgrest["registros_habitos"]
-                .select().decodeList<Map<String, String>>()
+                .select(Columns.raw("habito_id, usuario_id")) {
+                    filter { gte("fecha", fechaHaceNDias(30)) }
+                }
+                .decodeList<Map<String, String>>()
 
             val conteo = registros
                 .groupBy { it["habito_id"] ?: "" }
@@ -152,7 +173,8 @@ object AdminRepository {
             val top5ids = conteo.entries.sortedByDescending { it.value }.take(5).map { it.key }
 
             val habitos = SupabaseClient.client.postgrest["habitos"]
-                .select().decodeList<Habito>()
+                .select()
+                .decodeList<Habito>()
                 .associateBy { it.id ?: "" }
 
             top5ids.mapIndexedNotNull { index, id ->
