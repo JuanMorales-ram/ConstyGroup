@@ -8,50 +8,77 @@
     <!--permisos para usar notificaciones -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <application
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_logo"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_logo_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Consty_Group">
-        <activity
-            android:name=".Activities.RecuperarContrasena"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.ConfirmarCorreo"
-            android:exported="false" />
-        <activity
-            android:name=".auth.LogIn"
-            android:exported="false" />
-        <activity
-            android:name=".auth.Registro"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.InicioApp"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    <!-- Permiso para alarmas exactas (Android 12+) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".main.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.AdminActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
+    <!-- Permiso para alarmas exactas (Android 13+) — sin este no funciona en API 33+ -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
-        <!-- Receptor de notificaciones -->
+    <!-- Para que la alarma no se borre si el celular se reinicia -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+
+        <application
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_logo"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_logo_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.Consty_Group">
+            <activity
+                android:name=".Activities.RecuperarContrasena"
+                android:exported="false" />
+            <activity
+                android:name=".Activities.ConfirmarCorreo"
+                android:exported="false" />
+            <activity
+                android:name=".auth.LogIn"
+                android:exported="false" />
+            <activity
+                android:name=".auth.Registro"
+                android:exported="false" />
+            <activity
+                android:name=".Activities.InicioApp"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+            <activity
+                android:name=".main.MainActivity"
+                android:exported="false" />
+            <activity
+                android:name=".admin.AdminActivity"
+                android:exported="false"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustResize" />
+
+            <!-- Receptor de notificaciones -->
         <receiver
             android:name=".main.abito.HabitoReceiver"
             android:enabled="true"
             android:exported="false" />
+
+            <!--
+                BUG FIX: Receptor para reprogramar alarmas cuando el dispositivo se reinicia.
+                Sin esto, todas las alarmas desaparecen al apagar/encender el celular.
+            -->
+            <receiver
+                android:name=".main.abito.BootReceiver"
+                android:enabled="true"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+            </receiver>
+
+
+
     </application>
 
 </manifest>

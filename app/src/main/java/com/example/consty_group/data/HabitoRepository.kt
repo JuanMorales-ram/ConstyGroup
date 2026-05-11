@@ -12,12 +12,13 @@ import kotlinx.serialization.json.put
 @Serializable
 data class Habito(    val id: String? = null,
                       val usuario_id: String? = null,
-                      val nombre: String,
-                      val icono_res_id: Int,
-                      val color_hex: String,
-                      val recordatorio_activo: Boolean,
-                      val hora_recordatorio: String,
-                      val dias_semana: String,
+                      val nombre: String = "",
+                      val emoji: String = "📌",
+                      val icono_res_id: Int = 0,
+                      val color_hex: String = "",
+                      val recordatorio_activo: Boolean = false,
+                      val hora_recordatorio: String = "",
+                      val dias_semana: String = "",
                       var completadoHoy: Boolean = false,
                       var esComplejo: Boolean = false
 

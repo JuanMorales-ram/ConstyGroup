@@ -235,38 +235,58 @@ class NuevoAbitoFragment : Fragment() {
         _binding = null
     }
 
-    private fun programarNotificacion(nombreHabito: String, horaStr: String) {
+    fun programarNotificacion(nombreHabito: String, horaStr: String) {
         try {
+            // BUG FIX: Parsear la hora correctamente usando Locale.US
+            // para garantizar que "AM"/"PM" se interpreten bien
+            // independientemente del idioma del dispositivo.
+            val sdf = java.text.SimpleDateFormat("h:mm a", java.util.Locale.US)
+            val fechaParseada = sdf.parse(horaStr) ?: return
+            val calHora = Calendar.getInstance().apply { time = fechaParseada }
+
+            // BUG FIX: Construir el Calendar de disparo de forma correcta,
+            // partiendo de "ahora" y sobreescribiendo solo hora/minuto/segundo.
+            val calendar = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, calHora.get(Calendar.HOUR_OF_DAY))
+                set(Calendar.MINUTE, calHora.get(Calendar.MINUTE))
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+
+                // Si la hora ya pasó hoy, programar para mañana
+                if (timeInMillis <= System.currentTimeMillis()) {
+                    add(Calendar.DATE, 1)
+                }
+            }
+
             val intent = android.content.Intent(requireContext(), HabitoReceiver::class.java).apply {
                 putExtra("nombre_habito", nombreHabito)
+                // BUG FIX: Pasamos la cadena de hora para que el Receiver
+                // pueda reprogramar la alarma para el día siguiente.
+                putExtra("hora_recordatorio", horaStr)
             }
 
             val pendingIntent = android.app.PendingIntent.getBroadcast(
                 requireContext(),
-                nombreHabito.hashCode(), // ID único para que no se borren entre sí
+                nombreHabito.hashCode(),
                 intent,
                 android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE
             )
 
             val alarmManager = requireContext().getSystemService(android.content.Context.ALARM_SERVICE) as android.app.AlarmManager
 
-            // Convertir la hora (ej: 8:00 PM) a milisegundos
-            val sdf = java.text.SimpleDateFormat("h:mm a", java.util.Locale.US)
-            val date = sdf.parse(horaStr) ?: return
-            val calendar = Calendar.getInstance().apply {
-                val h = Calendar.getInstance()
-                h.time = date
-                set(Calendar.HOUR_OF_DAY, h.get(Calendar.HOUR_OF_DAY))
-                set(Calendar.MINUTE, h.get(Calendar.MINUTE))
-                set(Calendar.SECOND, 0)
-
-                // Si la hora ya pasó hoy, programarla para mañana
-                if (before(Calendar.getInstance())) {
-                    add(Calendar.DATE, 1)
+            // Verificar permiso de alarmas exactas en Android 12+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                if (!alarmManager.canScheduleExactAlarms()) {
+                    // Si no tiene permiso, usar alarma inexacta como fallback
+                    alarmManager.setAndAllowWhileIdle(
+                        android.app.AlarmManager.RTC_WAKEUP,
+                        calendar.timeInMillis,
+                        pendingIntent
+                    )
+                    return
                 }
             }
 
-            // Programar alarma
             alarmManager.setExactAndAllowWhileIdle(
                 android.app.AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,

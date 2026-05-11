@@ -17,53 +17,54 @@
         android:orientation="vertical">
 
         <!-- TOOLBAR -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarMainPage"
+        <androidx.appcompat.widget.Toolbar    android:id="@+id/toolbarMainPage"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:minHeight="70dp"
             android:background="@color/backgroundColo"
-            app:titleTextColor="@color/white">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bienvenido"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/tan"
-                />
+            app:contentInsetStart="0dp">
 
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="16dp">
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
 
+                <!-- TEXTO DE BIENVENIDA (Izquierda) -->
+                <TextView
+                    android:id="@+id/tvBienvenido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/tan"
+                    android:text="@string/bienvenido"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- LOGO (Centro) -->
                 <ImageView
                     android:id="@+id/ivLogo"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@mipmap/ic_logo"
-                    android:contentDescription="@string/logo" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/logo"
+                    android:src="@mipmap/ic_logo" />
 
+                <!-- FOTO PERFIL (Derecha) -->
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivFotoPerfilTop"
-                    android:layout_width="59dp"
-                    android:layout_height="59dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
-                    android:layout_marginStart="90dp"
                     android:src="@drawable/usuariopic"
                     app:shapeAppearanceOverlay="@style/CircleImage"
                     app:strokeColor="@color/BorderImageUsuario"
                     app:strokeWidth="3dp" />
 
-
-
-            </LinearLayout>
+            </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
